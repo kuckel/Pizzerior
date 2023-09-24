@@ -1,0 +1,31 @@
+﻿<Application x:Class="Pizzerior.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Pizzerior"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!-- Green Button -->
+        <Style x:Key="GreenButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#34A069"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#34A069"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#34A069"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Red Button -->
+        <Style x:Key="RedButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#DE0808"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#DE0808"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#DE0808"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>         
+    </Application.Resources>
+</Application>

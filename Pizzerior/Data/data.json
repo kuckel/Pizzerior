@@ -1,0 +1,43 @@
+[
+  {
+    "PizzeriaID": "17918044516649161854176799995897323401",
+    "Namn": "Tonys Pizza",
+    "Adress": "Nissegatan 5",
+    "PostNr": null,
+    "PostOrt": "Västerås",
+    "IntroBild": null,
+    "Skapad": "0001-01-01",
+    "Modifierad": "0001-01-01"
+  },
+  {
+    "PizzeriaID": "0139558025788203778429877360772691605780",
+    "Namn": "Åkes Pizza",
+    "Adress": "dfgdfg",
+    "PostNr": null,
+    "PostOrt": "Västerås",
+    "IntroBild": null,
+    "Skapad": "0001-01-01",
+    "Modifierad": "0001-01-01"
+  },
+  {
+    "PizzeriaID": "0139558025788203778429877360772691605780",
+    "Namn": "Åkes Pizza 2",
+    "Adress": "dfgdfg",
+    "PostNr": null,
+    "PostOrt": "Västerås",
+    "IntroBild": null,
+    "Skapad": "0001-01-01",
+    "Modifierad": "0001-01-01"
+  },
+
+  {
+    "PizzeriaID": "17918044516649161854176799995897323401",
+    "Namn": "Tonys Pizza 2",
+    "Adress": "Nissegatan 5",
+    "PostNr": null,
+    "PostOrt": "Västerås",
+    "IntroBild": null,
+    "Skapad": "0001-01-01",
+    "Modifierad": "0001-01-01"
+  }
+]
