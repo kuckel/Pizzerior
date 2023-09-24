@@ -5,8 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pizzerior.Views"
         mc:Ignorable="d"
-        Title="PizzeriaAdd" Height="450" Width="800">
-    <Grid>
-        <Label Content="Ny pizzeria"></Label> 
+        Title="Skapa ny Pizzeria" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Margin="5" Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="2" Grid.Column="0" HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Top" >
+            <Image Source="/Common/Resources/green.png" Height="16"  Width="16" Margin="0,0,4,0"/>
+            <Label Content="Ny Pizzeria" FontWeight="Bold" FontSize="16"  Foreground="#34A069"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="Auto" Padding="0,0,0,5"/>
+        </StackPanel>
+
+        <Border BorderBrush="#DBDBDB" BorderThickness="0,1,0,0" VerticalAlignment="Top" Width="Auto"  HorizontalAlignment="Stretch" Grid.Row="1" Grid.ColumnSpan="2" Padding="0,0,0,5"></Border>
+
+
+
+        <StackPanel Margin="0,8,0,0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Top" >
+            <Label Content="Pizzerians namn" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="Auto" Padding="0,0,0,5"/>
+            <TextBox Name="txtNamn" Text="{Binding SelectedPizzeria.Namn, Mode=TwoWay}" HorizontalAlignment="Stretch" MaxLength="40"  VerticalAlignment="Top" Width="Auto" Padding="7"/>
+        </StackPanel>
+
+        <StackPanel Margin="0,8,0,0" Grid.Row="2" Grid.ColumnSpan="2"  HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Top" >
+            <Label Content="Gatuadress" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="Auto" Padding="0,0,0,5"/>
+            <TextBox Name="txtAdress" Text="{Binding SelectedPizzeria.Adress, Mode=TwoWay}" HorizontalAlignment="Stretch" MaxLength="40"  VerticalAlignment="Top" Width="Auto" Padding="7"/>
+        </StackPanel>
+
+        <StackPanel Margin="0,8,0,0" Grid.Row="3"  Grid.Column="0" HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Top" >
+            <Label Content="Postnummer" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="Auto" Padding="0,0,0,5"/>
+            <TextBox Name="txtPostNr" Text="{Binding SelectedPizzeria.PostNr}"  HorizontalAlignment="Stretch" MaxLength="6"  VerticalAlignment="Top" Width="Auto" Padding="7"/>
+        </StackPanel>
+
+        <StackPanel Margin="8,8,0,0" Grid.Row="3" Grid.Column="1"  HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Top" >
+            <Label Content="PostOrt" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="Auto" Padding="0,0,0,5"/>
+            <TextBox Name="txtPostOrt" Text="{Binding SelectedPizzeria.PostOrt, Mode=TwoWay}" HorizontalAlignment="Stretch" MaxLength="40"  VerticalAlignment="Top" Width="Auto" Padding="7"/>
+        </StackPanel>
+
+        <StackPanel Margin="0,10,5,10" Grid.Row="4"  Orientation = "Horizontal"  HorizontalAlignment="Left" Width="Auto" VerticalAlignment="Top" >
+            <Button x:Name="btnSave" Width="100" Style="{StaticResource GreenButtonStyle}" Command="{Binding SaveCommand}" Content=" Spara " Padding="7"  Cursor="Hand"></Button>
+            <Button x:Name="btnClose" Width="90" Style="{StaticResource RedButtonStyle}" Margin="15,0,0,0"  Content=" Stäng " Command="{Binding CloseWinCommand, Mode=OneWay}" Padding="7"  Cursor="Hand" ></Button>
+        </StackPanel> 
     </Grid>
 </Window>
