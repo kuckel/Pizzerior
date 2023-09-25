@@ -20,23 +20,22 @@ namespace Pizzerior.ViewModels
     public partial class MainViewModel : ObservableObject
     {
      
-       // public ObservableCollection<Pizzeria> pizzerior { get; set; }
+       
         private ObservableCollection<Pizzeria> _pizzerior { get; set; }
         private readonly IPizzeriaService _pizzeriaService;
 
-        //private ObservableCollection<YourItemType> _yourCollection;
-        public ObservableCollection<Pizzeria> pizzerior { get; set; }
-        //{
-        //    //get { return _pizzerior; }
-        //    //set
-        //    //{
-        //    //    if (_pizzerior != value)
-        //    //    {
-        //    //        _pizzerior = value;
-        //    //        OnPropertyChanged(nameof(_pizzerior));
-        //    //    }
-        //    //}
-        //}
+        public ObservableCollection<Pizzeria> Pizzerior 
+        {
+            get { return _pizzerior; }
+            set
+            {
+                if (_pizzerior != value)
+                {
+                    _pizzerior = value;
+                    OnPropertyChanged(nameof(Pizzerior));
+                }
+            }
+        }
 
 
         [ObservableProperty]
@@ -45,9 +44,9 @@ namespace Pizzerior.ViewModels
         public MainViewModel()
         {
             _selectedPizzeria = new Pizzeria();
-            pizzerior = new ObservableCollection<Pizzeria>();
+            Pizzerior = new ObservableCollection<Pizzeria>();
             _pizzeriaService = new PizzeriaService();
-            pizzerior = _pizzeriaService.GetAllCollection();  
+            Pizzerior = _pizzeriaService.GetAllCollection();  
         }
 
 
@@ -56,36 +55,28 @@ namespace Pizzerior.ViewModels
         [RelayCommand]
         void Reload()
         {
-            pizzerior.Clear();
+            Pizzerior.Clear();
             foreach(Pizzeria pz in _pizzeriaService.GetAllCollection())
             {
-                pizzerior.Add(pz); 
+                Pizzerior.Add(pz); 
             }
         }
 
-        public void ReloadCollection()
-        {
-            pizzerior.Clear();
-            foreach (Pizzeria pz in _pizzeriaService.GetAllCollection())
-            {
-                pizzerior.Add(pz);
-            }
+        //public void ReloadCollection()
+        //{
+        //    pizzerior.Clear();
+        //    foreach (Pizzeria pz in _pizzeriaService.GetAllCollection())
+        //    {
+        //        pizzerior.Add(pz);
+        //    }
             
-        }
+        //}
 
 
 
         [RelayCommand]
         void Open(Pizzeria pizzeria)
         {
-            MessageBox.Show(pizzeria.Namn);
-            //var result = MessageBox.Show("Close application?", "Close", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            //if (result == MessageBoxResult.Yes)
-            //{
-            //    var w = Application.Current.Windows[0];
-            //    w.Close();
-            //}
-
 
             PizzeriaViewModel wvm = new PizzeriaViewModel();
             PizzeriaDetail win = new PizzeriaDetail();
@@ -95,11 +86,10 @@ namespace Pizzerior.ViewModels
             win.MaxWidth = 600;
             win.Owner = Application.Current.MainWindow;
             win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            win.Show();
+            win.ShowDialog();
+            Pizzerior = _pizzeriaService.GetAllCollection();
         }
            
-
-
 
 
         [RelayCommand]
@@ -112,9 +102,10 @@ namespace Pizzerior.ViewModels
             win.MaxWidth = 600;
             win.Owner = Application.Current.MainWindow;
             win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            win.Show();
+            win.ShowDialog();
+            Pizzerior = _pizzeriaService.GetAllCollection();
 
-            Reload(); 
+
         }
 
     }

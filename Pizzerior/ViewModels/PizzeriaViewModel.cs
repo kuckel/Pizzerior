@@ -33,7 +33,7 @@ namespace Pizzerior.ViewModels
         [RelayCommand]
         public void DoSave()
         {
-
+            _selectedPizzeria.Modifierad = DateTime.Now;
             Pizzeria upPizzeria = _pizzeriaService.Update(_selectedPizzeria);
             if(upPizzeria!=null)
             {

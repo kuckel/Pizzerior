@@ -61,7 +61,7 @@ namespace Pizzerior.Services
         public ObservableCollection<Pizzeria> GetAllCollection()
         {
             ObservableCollection<Pizzeria> tmpColList= new ObservableCollection<Pizzeria>();
-            List<Pizzeria> tmpList = GetAll();
+            List<Pizzeria> tmpList = GetAll().OrderByDescending(x => x.Modifierad).ToList();
             if (tmpList != null && tmpList.Count > 0)
             {
                 
@@ -82,7 +82,7 @@ namespace Pizzerior.Services
         {
             try
             {
-                List<Pizzeria> tmpList = GetAll();
+                List<Pizzeria> tmpList = GetAll().OrderByDescending(x => x.Modifierad).ToList();
                 if (tmpList == null)
                 {
                      tmpList= new List<Pizzeria>();            
@@ -101,7 +101,7 @@ namespace Pizzerior.Services
 
         public Pizzeria Update(Pizzeria pizzeria)
         {
-            List<Pizzeria> tmpList = GetAll();
+            List<Pizzeria> tmpList = GetAll().OrderByDescending(x => x.Modifierad).ToList();
             if (tmpList != null)
             {
                 tmpList.Add(pizzeria);
@@ -118,7 +118,7 @@ namespace Pizzerior.Services
 
         public bool Delete(string id)
         {
-            List<Pizzeria> tmpList = GetAll();
+            List<Pizzeria> tmpList = GetAll().OrderByDescending(x => x.Modifierad).ToList();
             if (tmpList != null)
             {
                 Pizzeria pizzeria = tmpList.Where(x => x.PizzeriaID == id).FirstOrDefault();

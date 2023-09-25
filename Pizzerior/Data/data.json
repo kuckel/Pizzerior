@@ -70,8 +70,8 @@
     "Modifierad": "2023-09-25"
   },
   {
-    "PizzeriaID": "0b8f50b6-b24e-4d4b-a1d1-f6d0ba9f6e2e",
-    "Namn": "aaaaaaaaaaaaa",
+    "PizzeriaID": "0cdb74a4-4693-4e61-99fd-c92ab6e0938c",
+    "Namn": "Stinas hembakade Pizza",
     "Adress": null,
     "PostNr": null,
     "PostOrt": null,
@@ -80,8 +80,8 @@
     "Modifierad": "2023-09-25"
   },
   {
-    "PizzeriaID": "fae54732-5da4-482d-bb17-689f4ce1ddb9",
-    "Namn": "fghjghjghjghjghj",
+    "PizzeriaID": "554b1e18-8e7e-4e9f-8971-f26855f7c568",
+    "Namn": "Åkes SpecialPizzor",
     "Adress": null,
     "PostNr": null,
     "PostOrt": null,
@@ -90,38 +90,48 @@
     "Modifierad": "2023-09-25"
   },
   {
-    "PizzeriaID": "8c9c814c-cd74-4a3d-aa25-223c1f888709",
-    "Namn": "aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    "Adress": null,
-    "PostNr": null,
-    "PostOrt": null,
+    "PizzeriaID": "4717f741-eb45-4196-aead-ba8407270161",
+    "Namn": "Nisses Goda Pizzor",
+    "Adress": "Nissevägen 22",
+    "PostNr": "34566",
+    "PostOrt": "VÄSTERÅS",
     "IntroBild": null,
     "Skapad": "2023-09-25",
     "Modifierad": "2023-09-25"
   },
   {
-    "PizzeriaID": "1dede825-e21e-4ad2-80bb-ccdd8c92c665",
-    "Namn": "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu",
-    "Adress": null,
-    "PostNr": null,
-    "PostOrt": null,
+    "PizzeriaID": "4717f741-eb45-4196-aead-ba8407270161",
+    "Namn": "Nisses Enormt Goda Pizzor",
+    "Adress": "Nissevägen 22",
+    "PostNr": "34566",
+    "PostOrt": "VÄSTERÅS",
     "IntroBild": null,
     "Skapad": "2023-09-25",
     "Modifierad": "2023-09-25"
   },
   {
-    "PizzeriaID": "b0ad16d9-cf42-4e11-9f51-6a4f3fdadec8",
-    "Namn": "YYYYYYYYYYYYYYYYYYYYYYYYYYYYY",
-    "Adress": null,
-    "PostNr": null,
-    "PostOrt": null,
+    "PizzeriaID": "0b95d3bc-a5c1-40f5-af67-e9cfeda465ce",
+    "Namn": "Åkes Enormt Slemmiga Pizza",
+    "Adress": "Slemvägen 11",
+    "PostNr": "244 77",
+    "PostOrt": "MARIESTAD",
     "IntroBild": null,
     "Skapad": "2023-09-25",
     "Modifierad": "2023-09-25"
   },
   {
-    "PizzeriaID": "6680793f-5641-4ac7-91da-c053d7ea9019",
-    "Namn": "OOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+    "PizzeriaID": "0b95d3bc-a5c1-40f5-af67-e9cfeda465ce",
+    "Namn": "Åkes Fruktansvärda Pizzor",
+    "Adress": "Slemvägen 11",
+    "PostNr": "244 77",
+    "PostOrt": "MARIESTAD",
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
+  },
+  {
+    "PizzeriaID": "0cdb74a4-4693-4e61-99fd-c92ab6e0938c",
+    "Namn": "Stinas hembakade Pizzor",
     "Adress": null,
     "PostNr": null,
     "PostOrt": null,
