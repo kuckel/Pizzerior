@@ -26,6 +26,18 @@
                     <Setter Property="Background" Value="#DE0808"/>
                 </Trigger>
             </Style.Triggers>
-        </Style>         
+        </Style>
+
+        <!-- Grey Button -->
+        <Style x:Key="GreyButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#909497"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#909497"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#909497"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>

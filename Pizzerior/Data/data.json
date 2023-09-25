@@ -1,17 +1,7 @@
 [
   {
-    "PizzeriaID": "17918044516649161854176799995897323401",
-    "Namn": "Tonys Pizza",
-    "Adress": "Nissegatan 5",
-    "PostNr": null,
-    "PostOrt": "Västerås",
-    "IntroBild": null,
-    "Skapad": "0001-01-01",
-    "Modifierad": "0001-01-01"
-  },
-  {
     "PizzeriaID": "0139558025788203778429877360772691605780",
-    "Namn": "Åkes Pizza",
+    "Namn": "Åkes Goda Pizzor",
     "Adress": "dfgdfg",
     "PostNr": null,
     "PostOrt": "Västerås",
@@ -20,8 +10,28 @@
     "Modifierad": "0001-01-01"
   },
   {
+    "PizzeriaID": "86e3e9d1-299d-4603-ab46-7785dab901c4",
+    "Namn": "Nisses Pizzeria",
+    "Adress": "Degvägen 5",
+    "PostNr": "345 67",
+    "PostOrt": "Västerås",
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
+  },
+  {
+    "PizzeriaID": "b53fe630-40c5-4be4-acb3-dda677049397",
+    "Namn": "sdfsd",
+    "Adress": "sdf",
+    "PostNr": null,
+    "PostOrt": "dgfdf",
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
+  },
+  {
     "PizzeriaID": "0139558025788203778429877360772691605780",
-    "Namn": "Åkes Pizza 2",
+    "Namn": "Åkes Goda Pizzor",
     "Adress": "dfgdfg",
     "PostNr": null,
     "PostOrt": "Västerås",
@@ -29,15 +39,144 @@
     "Skapad": "0001-01-01",
     "Modifierad": "0001-01-01"
   },
-
   {
-    "PizzeriaID": "17918044516649161854176799995897323401",
-    "Namn": "Tonys Pizza 2",
-    "Adress": "Nissegatan 5",
-    "PostNr": null,
+    "PizzeriaID": "86e3e9d1-299d-4603-ab46-7785dab901c4",
+    "Namn": "Nisses Pizzeria 2",
+    "Adress": "Degvägen 5",
+    "PostNr": "345 67",
     "PostOrt": "Västerås",
     "IntroBild": null,
-    "Skapad": "0001-01-01",
-    "Modifierad": "0001-01-01"
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
+  },
+  {
+    "PizzeriaID": "86e3e9d1-299d-4603-ab46-7785dab901c4",
+    "Namn": "Nisses Pizzeria",
+    "Adress": "Degvägen 5",
+    "PostNr": "345 67",
+    "PostOrt": "Västerås",
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
+  },
+  {
+    "PizzeriaID": "6d3dd0db-0579-4076-9ed1-e648921e272a",
+    "Namn": "RRR",
+    "Adress": null,
+    "PostNr": null,
+    "PostOrt": null,
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
+  },
+  {
+    "PizzeriaID": "86e3e9d1-299d-4603-ab46-7785dab901c4",
+    "Namn": "Nisses Pizzeria",
+    "Adress": "Degvägen 5",
+    "PostNr": "345 67",
+    "PostOrt": "Västerås",
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
+  },
+  {
+    "PizzeriaID": "98763d0f-0760-424e-8e83-cca1e68ba893",
+    "Namn": "ttt",
+    "Adress": null,
+    "PostNr": null,
+    "PostOrt": null,
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
+  },
+  {
+    "PizzeriaID": "0ebacbd1-c0ce-4904-8d65-34e795f47912",
+    "Namn": "aaa",
+    "Adress": null,
+    "PostNr": null,
+    "PostOrt": null,
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
+  },
+  {
+    "PizzeriaID": "b286ff2e-83e2-4205-88c1-a07a10f56c8c",
+    "Namn": "gg",
+    "Adress": null,
+    "PostNr": null,
+    "PostOrt": null,
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
+  },
+  {
+    "PizzeriaID": "c5f4f997-5394-42cd-8052-d3a1d8356edb",
+    "Namn": "öö",
+    "Adress": null,
+    "PostNr": null,
+    "PostOrt": null,
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
+  },
+  {
+    "PizzeriaID": "b9b331ed-62e1-4ba9-92ca-bb7a0879f247",
+    "Namn": "Kalles",
+    "Adress": "fghfgh",
+    "PostNr": null,
+    "PostOrt": null,
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
+  },
+  {
+    "PizzeriaID": "61820361-43a5-4457-840d-90c16cd5f063",
+    "Namn": "ghjgjghj",
+    "Adress": null,
+    "PostNr": null,
+    "PostOrt": null,
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
+  },
+  {
+    "PizzeriaID": "fc7a5b87-5890-480c-8ffc-3cb590da9656",
+    "Namn": "jkljkljkl",
+    "Adress": null,
+    "PostNr": null,
+    "PostOrt": null,
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
+  },
+  {
+    "PizzeriaID": "f4621043-2463-4cc4-afe8-43dc03e8f01a",
+    "Namn": "Pelles",
+    "Adress": null,
+    "PostNr": null,
+    "PostOrt": null,
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
+  },
+  {
+    "PizzeriaID": "0cf1c1cf-9418-4221-8d4c-e7aa6446dd1d",
+    "Namn": "Ankis pizza",
+    "Adress": "ghjghj",
+    "PostNr": null,
+    "PostOrt": null,
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
+  },
+  {
+    "PizzeriaID": "24e2973a-3bdf-4c5e-8d48-ebe369fd1a8b",
+    "Namn": "hjhjkhjkhjk",
+    "Adress": null,
+    "PostNr": null,
+    "PostOrt": null,
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25"
   }
 ]

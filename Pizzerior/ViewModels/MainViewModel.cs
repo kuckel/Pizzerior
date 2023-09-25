@@ -11,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace Pizzerior.ViewModels
@@ -21,6 +23,7 @@ namespace Pizzerior.ViewModels
         public ObservableCollection<Pizzeria> pizzerior { get; set; }
         private readonly IPizzeriaService _pizzeriaService;
        
+
 
         [ObservableProperty]
         Pizzeria _selectedPizzeria;
@@ -33,6 +36,16 @@ namespace Pizzerior.ViewModels
             pizzerior = _pizzeriaService.GetAllCollection();  
         }
 
+        public string Test { get; set; } = "Peter testar";
+
+
+        [RelayCommand]
+        void Reload()
+        {
+            //CollectionViewSource.GetDefaultView(pizzerior).Refresh();
+            CollectionViewSource.GetDefaultView(this.pizzerior).Refresh();
+
+        }
 
 
         [RelayCommand]

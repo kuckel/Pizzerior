@@ -13,8 +13,11 @@ namespace Pizzerior.Models
 
         [Key]
         [Required]
+        
         public string PizzeriaID { get; set; }
         [Required]
+        [MinLength(5,ErrorMessage="Minst 5 tecken!!")]
+        [MaxLength(40)]
         public string Namn { get; set; }
         public string Adress { get; set; }
         public string PostNr { get; set; }

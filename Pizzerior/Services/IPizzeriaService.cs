@@ -13,9 +13,10 @@ namespace Pizzerior.Services
     {
         public List<Pizzeria> GetAll();
         public Pizzeria Get(string id);
-        public bool Create(List<Pizzeria> pizzerior);
+        public bool Create(Pizzeria pizza);
         public Pizzeria Update(Pizzeria pizzeria);
         public bool Delete(string id);
+        bool IsPizzeriaUnique(String pizzeriaNamn);
         ObservableCollection<Pizzeria> GetAllCollection();
     }
 }

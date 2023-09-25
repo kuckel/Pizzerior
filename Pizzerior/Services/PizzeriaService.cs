@@ -46,6 +46,12 @@ namespace Pizzerior.Services
 
         }
 
+        public bool IsPizzeriaUnique(String pizzeriaNamn)
+        {
+            Pizzeria pz = GetAll().Where(x => x.Namn == pizzeriaNamn).FirstOrDefault();
+            if(pz!=null) { return false; } else { return true; }
+        }
+
 
         public ObservableCollection<Pizzeria> GetAllCollection()
         {
@@ -67,11 +73,13 @@ namespace Pizzerior.Services
             return DeserializeFromJson<List<Pizzeria>>(json).Where(x=>x.PizzeriaID == id).FirstOrDefault() ;
         }
 
-        public bool Create(List<Pizzeria> pizzerior)
+        public bool Create(Pizzeria pizza)
         {
             try
             {
-                var json = SerializeToJson(pizzerior);
+                List<Pizzeria> tmpList = GetAll();
+                tmpList.Add(pizza); 
+                var json = SerializeToJson(tmpList);
                 SaveJsonAsFile(json, dataPath());
                 return true;
             }

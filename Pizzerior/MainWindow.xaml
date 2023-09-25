@@ -28,7 +28,10 @@
 
         <StackPanel Orientation="Horizontal"  VerticalAlignment="Bottom"  HorizontalAlignment="Center"  Grid.Row="0" Grid.Column="1"  Width="Auto">
             <Image Source="/Common/Resources/green.png" Height="16" Width="16" Margin="0,2,0,0"/>
-            <TextBlock x:Name="btnHome" Text="Pizzerior" Cursor="Hand" Padding="4,0,0,0" FontWeight="Bold" FontSize="20"  Foreground="#34A069"  />
+            
+            <Button BorderThickness="0" Background="Transparent" Content="PizzeriaGuiden" FontWeight="Bold" 
+                    FontSize="16" Foreground="#34A069" HorizontalAlignment="Stretch" Command="{Binding ReloadCommand}" 
+                    Width="Auto" Padding="5,0,0,5" VerticalAlignment="Top"></Button>
         </StackPanel>
 
 
