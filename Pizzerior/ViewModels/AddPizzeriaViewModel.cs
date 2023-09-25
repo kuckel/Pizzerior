@@ -146,7 +146,9 @@ namespace Pizzerior.ViewModels
             bool result = _pizzeriaService.Create(_pizzeria);
             if (result)
             {
-                 
+                MainVM.ReloadCommand.Execute(null) ;
+                //MainVM.pizzerior.Add(_pizzeria);
+
                 CloseWin();
             }
             else

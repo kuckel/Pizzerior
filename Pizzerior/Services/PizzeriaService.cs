@@ -48,8 +48,13 @@ namespace Pizzerior.Services
 
         public bool IsPizzeriaUnique(String pizzeriaNamn)
         {
-            Pizzeria pz = GetAll().Where(x => x.Namn == pizzeriaNamn).FirstOrDefault();
-            if(pz!=null) { return false; } else { return true; }
+            List<Pizzeria> list = GetAll();
+            if (list != null)
+            {
+               Pizzeria pz = list.Where(x => x.Namn == pizzeriaNamn).FirstOrDefault();
+               if(pz!=null) { return false; } else { return true; }               
+            } else { return true; }
+
         }
 
 
@@ -78,7 +83,11 @@ namespace Pizzerior.Services
             try
             {
                 List<Pizzeria> tmpList = GetAll();
-                tmpList.Add(pizza); 
+                if (tmpList == null)
+                {
+                     tmpList= new List<Pizzeria>();            
+                }
+                tmpList.Add(pizza);  
                 var json = SerializeToJson(tmpList);
                 SaveJsonAsFile(json, dataPath());
                 return true;
@@ -88,6 +97,7 @@ namespace Pizzerior.Services
                 return false;
             }
         }
+
 
         public Pizzeria Update(Pizzeria pizzeria)
         {

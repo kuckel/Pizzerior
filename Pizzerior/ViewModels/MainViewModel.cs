@@ -20,9 +20,23 @@ namespace Pizzerior.ViewModels
     public partial class MainViewModel : ObservableObject
     {
      
-        public ObservableCollection<Pizzeria> pizzerior { get; set; }
+       // public ObservableCollection<Pizzeria> pizzerior { get; set; }
+        private ObservableCollection<Pizzeria> _pizzerior { get; set; }
         private readonly IPizzeriaService _pizzeriaService;
-       
+
+        //private ObservableCollection<YourItemType> _yourCollection;
+        public ObservableCollection<Pizzeria> pizzerior { get; set; }
+        //{
+        //    //get { return _pizzerior; }
+        //    //set
+        //    //{
+        //    //    if (_pizzerior != value)
+        //    //    {
+        //    //        _pizzerior = value;
+        //    //        OnPropertyChanged(nameof(_pizzerior));
+        //    //    }
+        //    //}
+        //}
 
 
         [ObservableProperty]
@@ -36,16 +50,29 @@ namespace Pizzerior.ViewModels
             pizzerior = _pizzeriaService.GetAllCollection();  
         }
 
-        public string Test { get; set; } = "Peter testar";
+
 
 
         [RelayCommand]
         void Reload()
         {
-            //CollectionViewSource.GetDefaultView(pizzerior).Refresh();
-            CollectionViewSource.GetDefaultView(this.pizzerior).Refresh();
-
+            pizzerior.Clear();
+            foreach(Pizzeria pz in _pizzeriaService.GetAllCollection())
+            {
+                pizzerior.Add(pz); 
+            }
         }
+
+        public void ReloadCollection()
+        {
+            pizzerior.Clear();
+            foreach (Pizzeria pz in _pizzeriaService.GetAllCollection())
+            {
+                pizzerior.Add(pz);
+            }
+            
+        }
+
 
 
         [RelayCommand]
@@ -85,7 +112,9 @@ namespace Pizzerior.ViewModels
             win.MaxWidth = 600;
             win.Owner = Application.Current.MainWindow;
             win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            win.Show();            
+            win.Show();
+
+            Reload(); 
         }
 
     }
