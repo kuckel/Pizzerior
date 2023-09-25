@@ -61,7 +61,7 @@ namespace Pizzerior.Services
         public ObservableCollection<Pizzeria> GetAllCollection()
         {
             ObservableCollection<Pizzeria> tmpColList= new ObservableCollection<Pizzeria>();
-            List<Pizzeria> tmpList = GetAll().OrderByDescending(x => x.Modifierad).ToList();
+            List<Pizzeria> tmpList = GetAll();
             if (tmpList != null && tmpList.Count > 0)
             {
                 

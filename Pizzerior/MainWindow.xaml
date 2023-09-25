@@ -48,7 +48,7 @@
 
 
         <!-- Grid Start -->
-        <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="#F1F1F1">
+        <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="#F3F3F3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -56,29 +56,72 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="0">
 
-            <ItemsControl x:Name="itmList"  ItemsSource="{Binding Pizzerior}"  HorizontalAlignment="Stretch" Width="Auto">
+                <ItemsControl x:Name="itmList"  ItemsSource="{Binding Pizzerior}"  HorizontalAlignment="Stretch" Width="Auto" Grid.Column="0" Grid.Row="0">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate >
-                        <UniformGrid Columns="2"  Width="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Top"  Height="Auto" />
+                            <UniformGrid Columns="2"  Width="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Top"  Height="Auto"  Margin="2" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
-                    <DataTemplate >
+                    <DataTemplate>
 
-                        <!-- rubrik Namn -->
+                            <Border BorderBrush="#DBDBDB" BorderThickness="1"  VerticalAlignment="Top" Width="Auto"  HorizontalAlignment="Stretch" Margin="5" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Background="red"  Height="70" MaxHeight="100" >   
 
-                        <TextBlock  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Cursor="Hand"  Padding="10">
-                            <Button Background="Transparent" BorderThickness="0" Content="{Binding Namn}" CommandParameter="{Binding}"  Command="{Binding DataContext.OpenCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}">
+                                <Button Background="Transparent" BorderThickness="0"  Width="Auto"  CommandParameter="{Binding}"  Command="{Binding DataContext.OpenCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}">
+                                   
+                                <Grid HorizontalAlignment="Left"> 
+                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>                                     
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" MinWidth="50"/>                                    
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                    
+                                    
+                                <!-- Image -->
+                                <Image Source="/Common/Resources/Green.png"  Grid.Column="0" Grid.RowSpan="3" HorizontalAlignment="Center"  VerticalAlignment="Center"   Stretch="None"  Height="Auto" >
+                                   <Image.ToolTip>
+                                    <Binding Path="Namn" />
+                                    </Image.ToolTip> 
+                                 </Image>
+                                    
+                                <!-- rubrik Namn -->                               
+                                <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="0">
+                                    <Label Content="{Binding Namn}" ></Label> 
+                                </StackPanel> 
+                                 <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="1">
+                                    <Label Content="{Binding Adress}"></Label> 
+                                </StackPanel>                               
+                                
+                                
+                            </Grid>
+                          
                             </Button>
-                        </TextBlock>                            
+                            </StackPanel>                              
+                                <Border.Effect>
+                                    <DropShadowEffect ShadowDepth="1" Opacity="0.1"/>
+                                </Border.Effect>
 
+         
+                            </Border>
 
-                    </DataTemplate>
+                        </DataTemplate>
                 </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style TargetType="ContentPresenter">
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                                    
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                </ItemsControl>
 
-
+                </ScrollViewer> 
         </Grid>
 
         </Grid>
