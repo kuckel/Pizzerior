@@ -118,6 +118,7 @@ namespace Pizzerior.ViewModels
         [RelayCommand]
         void CreatePizzeria()
         {
+            string id = Guid.NewGuid().ToString();
 
             if (string.IsNullOrEmpty(Namn))
             {
@@ -126,15 +127,15 @@ namespace Pizzerior.ViewModels
                 return;
             }
 
-            if (_pizzeriaService.IsPizzeriaUnique(Namn) == false)
+            if (_pizzeriaService.IsPizzeriaUnique(Namn, id) == false)
             {
-                MessageBox.Show($"Pizzerians namn {Namn} finns redan", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Pizzerians namn {Namn} eller id finns redan", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             _pizzeria = new Pizzeria
             {
-                PizzeriaID = Guid.NewGuid().ToString(),
+                PizzeriaID = id,
                 Namn = Namn,
                 Adress = Adress,
                 PostNr = PostNr,

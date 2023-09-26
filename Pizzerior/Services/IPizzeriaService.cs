@@ -16,7 +16,7 @@ namespace Pizzerior.Services
         public bool Create(Pizzeria pizza);
         public Pizzeria Update(Pizzeria pizzeria);
         public bool Delete(string id);
-        bool IsPizzeriaUnique(String pizzeriaNamn);
+        bool IsPizzeriaUnique(String pizzeriaNamn, string pizzeriaId);
         ObservableCollection<Pizzeria> GetAllCollection();
     }
 }

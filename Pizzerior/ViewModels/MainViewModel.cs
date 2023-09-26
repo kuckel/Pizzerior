@@ -37,6 +37,23 @@ namespace Pizzerior.ViewModels
             }
         }
 
+        private string searchFor;
+        public string SearchFor
+        {
+            get { return searchFor; }
+            set { SetProperty(ref searchFor, value); }
+        }
+
+        /// <summary>
+        /// Sets the tool-status-bar at bottom with text
+        /// </summary>
+        private string statusText;
+        public string StatusText
+        {
+            get { return statusText; }
+            set { SetProperty(ref statusText, value); }
+        }
+
 
         [ObservableProperty]
         Pizzeria _selectedPizzeria;
@@ -46,38 +63,52 @@ namespace Pizzerior.ViewModels
             _selectedPizzeria = new Pizzeria();
             Pizzerior = new ObservableCollection<Pizzeria>();
             _pizzeriaService = new PizzeriaService();
-            Pizzerior = _pizzeriaService.GetAllCollection();  
+            Pizzerior = _pizzeriaService.GetAllCollection();
+            StatusText = "Antal pizzerior: " + Pizzerior.Count();
         }
 
 
 
 
         [RelayCommand]
-        void Reload()
+        public void Reload()
         {
             Pizzerior.Clear();
             foreach(Pizzeria pz in _pizzeriaService.GetAllCollection())
             {
                 Pizzerior.Add(pz); 
             }
+            StatusText = "Antal pizzerior: " + Pizzerior.Count();
         }
 
-        //public void ReloadCollection()
-        //{
-        //    pizzerior.Clear();
-        //    foreach (Pizzeria pz in _pizzeriaService.GetAllCollection())
-        //    {
-        //        pizzerior.Add(pz);
-        //    }
+        [RelayCommand]
+        public void Search()
+        {
+            if(!string.IsNullOrEmpty(SearchFor) )
+            {
+                Pizzerior.Clear();
+                foreach (Pizzeria pz in _pizzeriaService.GetAllCollection().Where(x=>x.Namn.ToLower().Contains(searchFor.ToLower()) || x.Adress.ToLower().Contains(searchFor.ToLower())))
+                {
+                    Pizzerior.Add(pz);
+                }
+                StatusText = "Din sökning gav: " + Pizzerior.Count() + " pizzerior";
+            }
+            else
+            {
+                Reload();
+            }
+
             
-        //}
+            SearchFor = "";
+
+        }
 
 
 
         [RelayCommand]
         void Open(Pizzeria pizzeria)
         {
-
+            StatusText = "Vald pizzeria: " + pizzeria.Namn; 
             PizzeriaViewModel wvm = new PizzeriaViewModel();
             PizzeriaDetail win = new PizzeriaDetail();
             win.DataContext = wvm;
@@ -88,6 +119,8 @@ namespace Pizzerior.ViewModels
             win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             win.ShowDialog();
             Pizzerior = _pizzeriaService.GetAllCollection();
+            StatusText = "Antal pizzerior: " + Pizzerior.Count();
+
         }
            
 
@@ -95,6 +128,7 @@ namespace Pizzerior.ViewModels
         [RelayCommand]
         void OpenAdd()
         {
+            StatusText = "Lägg till Pizzeria";
             AddPizzeriaViewModel wvm = new AddPizzeriaViewModel();
             PizzeriaAdd win = new PizzeriaAdd();
             win.DataContext = wvm;
@@ -104,6 +138,8 @@ namespace Pizzerior.ViewModels
             win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             win.ShowDialog();
             Pizzerior = _pizzeriaService.GetAllCollection();
+            StatusText = "Antal pizzerior: " + Pizzerior.Count();
+
 
 
         }

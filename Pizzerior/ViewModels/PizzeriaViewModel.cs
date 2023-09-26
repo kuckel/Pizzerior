@@ -18,7 +18,7 @@ namespace Pizzerior.ViewModels
     public partial class PizzeriaViewModel : ObservableObject 
     {
         private readonly IPizzeriaService _pizzeriaService;
-        
+        public MainViewModel MainVM => ViewModelLocator.Instance.MainViewModel;
 
         [ObservableProperty]
         public Pizzeria _selectedPizzeria;
@@ -26,6 +26,7 @@ namespace Pizzerior.ViewModels
         public PizzeriaViewModel()
         {
             _pizzeriaService = new PizzeriaService();
+             
         }            
 
 
@@ -37,6 +38,7 @@ namespace Pizzerior.ViewModels
             Pizzeria upPizzeria = _pizzeriaService.Update(_selectedPizzeria);
             if(upPizzeria!=null)
             {
+                MainVM.StatusText = $"Pizzeria {upPizzeria.Namn} uppdaterad";
                 CloseWindow();
             }
             else
@@ -58,6 +60,7 @@ namespace Pizzerior.ViewModels
                 bool res = _pizzeriaService.Delete(id); 
                 if (res)
                 {
+                    
                     CloseWindow();
                 }
                 else
@@ -74,13 +77,15 @@ namespace Pizzerior.ViewModels
         [RelayCommand]
         void CloseWin()
         {
-            //MainViewModel.LoadCategoryCommand.Execute();
+            
 
             CloseWindow();
         }
 
         private void CloseWindow()
         {
+            MainVM.ReloadCommand.Execute(null); // Reload the Main
+
             foreach (Window window in Application.Current.Windows)
             {
                 if (window is PizzeriaDetail)

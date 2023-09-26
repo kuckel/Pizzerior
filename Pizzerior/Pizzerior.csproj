@@ -8,10 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <None Remove="Data\**" />
+    <Page Remove="Data\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Common\Resources\green.png" />
     <None Remove="Common\Resources\magnify.png" />
     <None Remove="Common\Resources\plus-circle-outline.png" />
     <None Remove="Common\Resources\plus-circle.png" />
+    <None Remove="green.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,6 +44,7 @@
     <Resource Include="Common\Resources\plus-circle.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="green.png" />
   </ItemGroup>
 
 </Project>
