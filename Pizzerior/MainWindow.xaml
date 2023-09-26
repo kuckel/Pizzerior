@@ -68,9 +68,10 @@
                     <DataTemplate>
 
                             <Border BorderBrush="#DBDBDB" BorderThickness="1"  VerticalAlignment="Top" Width="Auto"  HorizontalAlignment="Stretch" Margin="5" >
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Background="red"  Height="70" MaxHeight="100" >   
 
-                                <Button Background="Transparent" BorderThickness="0"  Width="Auto"  CommandParameter="{Binding}"  Command="{Binding DataContext.OpenCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}">
+                                <DockPanel  HorizontalAlignment="Stretch" Background="white"  Height="70" MaxHeight="100" Width="Auto">
+                                    <Button Background="Transparent" BorderThickness="0"  Width="Auto"  CommandParameter="{Binding}" HorizontalContentAlignment="Left"   DockPanel.Dock="Left" HorizontalAlignment="Stretch"   
+                                        Command="{Binding DataContext.OpenCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}">
                                    
                                 <Grid HorizontalAlignment="Left"> 
                                  <Grid.RowDefinitions>
@@ -79,31 +80,37 @@
                                     <RowDefinition Height="*"/>                                     
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="50" MinWidth="50"/>                                    
-                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="80" MaxWidth="80"/>                                    
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                     
                                     
                                 <!-- Image -->
-                                <Image Source="/Common/Resources/Green.png"  Grid.Column="0" Grid.RowSpan="3" HorizontalAlignment="Center"  VerticalAlignment="Center"   Stretch="None"  Height="Auto" >
+                                <Image Source="/Common/Resources/Green.png"  Grid.Column="0" Grid.RowSpan="3"   HorizontalAlignment="Center"  VerticalAlignment="Center"   Stretch="None"  Height="Auto" >
                                    <Image.ToolTip>
                                     <Binding Path="Namn" />
                                     </Image.ToolTip> 
-                                 </Image>
-                                    
+                                 </Image>                                    
+
                                 <!-- rubrik Namn -->                               
-                                <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="0">
-                                    <Label Content="{Binding Namn}" ></Label> 
-                                </StackPanel> 
-                                 <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="1">
-                                    <Label Content="{Binding Adress}"></Label> 
-                                </StackPanel>                               
-                                
-                                
-                            </Grid>
+                                <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="0" Margin="0">
+                                    <Label Content="{Binding Namn}" Padding="0"></Label> 
+                                </StackPanel>
+                                <!-- Adress -->
+                                 <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="1" Margin="0">
+                                    <Label Content="{Binding Adress}" Padding="0"></Label> 
+                                </StackPanel>
+                                 <!-- PostNr & Ort  -->
+                                 <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="2" Margin="0">
+                                    <Label Content="{Binding PostNr}" Padding="0"></Label>
+                                    <Label Content="{Binding PostOrt}" Padding="7,0,0,0"></Label>
+                                </StackPanel>
+
+
+                                </Grid>
                           
                             </Button>
-                            </StackPanel>                              
+                                </DockPanel>
                                 <Border.Effect>
                                     <DropShadowEffect ShadowDepth="1" Opacity="0.1"/>
                                 </Border.Effect>

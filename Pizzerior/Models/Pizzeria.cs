@@ -13,7 +13,6 @@ namespace Pizzerior.Models
 
         [Key]
         [Required]
-        
         public string PizzeriaID { get; set; }
         [Required]
         [MinLength(5,ErrorMessage="Minst 5 tecken!!")]
@@ -27,7 +26,8 @@ namespace Pizzerior.Models
         public DateTime Modifierad { get; set; }
         List<Omdome> Omdomen { get; set; }
 
-    }
+    }       
+
 
 
 }

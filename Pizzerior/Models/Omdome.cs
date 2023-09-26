@@ -19,6 +19,7 @@ namespace Pizzerior.Models
         public int Betyg { get; set; } = 0;
         public DateTime Skapad { get; set; }
         public DateTime Modifierad { get; set; }
+        Pizzeria Pizzeria { get; set; }
 
     }
 }

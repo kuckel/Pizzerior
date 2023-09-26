@@ -1,5 +1,35 @@
 [
   {
+    "PizzeriaID": "554b1e18-8e7e-4e9f-8971-f26855f7c568",
+    "Namn": "Åkes SpecialPizzor",
+    "Adress": "rINGVÄGEN 5",
+    "PostNr": "345 77",
+    "PostOrt": "STRÄNGNÄS",
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-26"
+  },
+  {
+    "PizzeriaID": "554b1e18-8e7e-4e9f-8971-f26855f7c568",
+    "Namn": "Åkes SpecialPizzor",
+    "Adress": "Ringvägen 5",
+    "PostNr": "345 77",
+    "PostOrt": "STRÄNGNÄS",
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-26"
+  },
+  {
+    "PizzeriaID": "554b1e18-8e7e-4e9f-8971-f26855f7c568",
+    "Namn": "Åkes SpecialPizzor",
+    "Adress": "Jarvagatan 6",
+    "PostNr": null,
+    "PostOrt": null,
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-26"
+  },
+  {
     "PizzeriaID": "0f7000d0-996e-4620-8717-523a1df4cc13",
     "Namn": "Peters Goda Pizza",
     "Adress": "Ringvägen 5",
@@ -70,16 +100,6 @@
     "Modifierad": "2023-09-25"
   },
   {
-    "PizzeriaID": "0cdb74a4-4693-4e61-99fd-c92ab6e0938c",
-    "Namn": "Stinas hembakade Pizza",
-    "Adress": null,
-    "PostNr": null,
-    "PostOrt": null,
-    "IntroBild": null,
-    "Skapad": "2023-09-25",
-    "Modifierad": "2023-09-25"
-  },
-  {
     "PizzeriaID": "554b1e18-8e7e-4e9f-8971-f26855f7c568",
     "Namn": "Åkes SpecialPizzor",
     "Adress": null,
@@ -125,16 +145,6 @@
     "Adress": "Slemvägen 11",
     "PostNr": "244 77",
     "PostOrt": "MARIESTAD",
-    "IntroBild": null,
-    "Skapad": "2023-09-25",
-    "Modifierad": "2023-09-25"
-  },
-  {
-    "PizzeriaID": "0cdb74a4-4693-4e61-99fd-c92ab6e0938c",
-    "Namn": "Stinas hembakade Pizzor",
-    "Adress": null,
-    "PostNr": null,
-    "PostOrt": null,
     "IntroBild": null,
     "Skapad": "2023-09-25",
     "Modifierad": "2023-09-25"

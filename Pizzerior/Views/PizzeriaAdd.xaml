@@ -51,7 +51,7 @@
 
         <StackPanel Margin="0,10,5,10" Grid.Row="4"  Orientation = "Horizontal"  HorizontalAlignment="Left" Width="Auto" VerticalAlignment="Top" >
             <Button x:Name="btnSave" Width="100" Style="{StaticResource GreenButtonStyle}" Command="{Binding CreatePizzeriaCommand}" Content=" Spara " Padding="7"  Cursor="Hand"></Button>
-            <Button x:Name="btnClose" Width="90" Style="{StaticResource RedButtonStyle}" Margin="15,0,0,0"  Content=" Stäng " Command="{Binding CloseWinCommand}" Padding="7"  Cursor="Hand" ></Button>
+            <Button x:Name="btnClose" Width="90" Style="{StaticResource GreyButtonStyle}" Margin="15,0,0,0"  Content=" Stäng " Command="{Binding CloseWinCommand}" Padding="7"  Cursor="Hand" ></Button>
         </StackPanel> 
     </Grid>
 </Window>
