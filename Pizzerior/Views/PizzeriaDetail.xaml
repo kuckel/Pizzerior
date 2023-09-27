@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Pizzerior.Views" xmlns:viewmodels="clr-namespace:Pizzerior.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:PizzeriaViewModel}"
         mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" MaxHeight="400" MaxWidth="600"
-      Title="{Binding SelectedPizzeria.Namn}">
+      Title="{Binding SelectedPizzeria.Namn}" Icon="/Views/green.png">
 
     <Grid Margin="10">
         <Grid.RowDefinitions>

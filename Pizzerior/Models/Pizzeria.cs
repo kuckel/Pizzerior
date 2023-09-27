@@ -15,9 +15,12 @@ namespace Pizzerior.Models
         [Required]
         public string PizzeriaID { get; set; }
         [Required]
-        [MinLength(5,ErrorMessage="Minst 5 tecken!!")]
+        [MinLength(5,ErrorMessage="Minst 5 tecken i Namn")]
         [MaxLength(40)]
         public string Namn { get; set; }
+        [Required]
+        [MinLength(5, ErrorMessage = "Minst 5 tecken i Adressen")]
+        [MaxLength(40)]
         public string Adress { get; set; }
         public string PostNr { get; set; }
         public string PostOrt { get; set; }

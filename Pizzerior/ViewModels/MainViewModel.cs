@@ -87,7 +87,7 @@ namespace Pizzerior.ViewModels
             if(!string.IsNullOrEmpty(SearchFor) )
             {
                 Pizzerior.Clear();
-                foreach (Pizzeria pz in _pizzeriaService.GetAllCollection().Where(x=>x.Namn.ToLower().Contains(searchFor.ToLower()) || x.Adress.ToLower().Contains(searchFor.ToLower())))
+                foreach (Pizzeria pz in _pizzeriaService.GetAllCollection().Where(x=>x.Namn.ToLower().Contains(searchFor.ToLower()) || x.Adress!=null &&  x.Adress.ToLower().Contains(searchFor.ToLower())))
                 {
                     Pizzerior.Add(pz);
                 }

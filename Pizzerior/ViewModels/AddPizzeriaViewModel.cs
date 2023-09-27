@@ -13,6 +13,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 using System.Xml.Linq;
 
 namespace Pizzerior.ViewModels
@@ -36,7 +37,7 @@ namespace Pizzerior.ViewModels
 
 
 
-        [RelayCommand]
+[RelayCommand]
         void CloseWin()
         {
              
@@ -55,21 +56,26 @@ namespace Pizzerior.ViewModels
             }
         }
 
-        private string _namn;
-        [Required]
-        [MinLength(5, ErrorMessage = "Minst 5 tecken")]
-        [MaxLength(40)]
+
         
-        
+         private string _namn;
+        [Required(ErrorMessage = "Fältet är obligatoriskt.")]
+        [MinLength(5, ErrorMessage = "Minst 5 tecken i namn")]
+        [MaxLength(40)]       
         public string Namn
         {
             get { return _namn; }
             set
             {
+
                 SetProperty(ref _namn, value);
             }
         }
+
         private string _adress;
+        [Required(ErrorMessage = "Fältet är obligatoriskt.")]
+        [MinLength(5, ErrorMessage = "Minst 5 tecken i Adressen")]
+        [MaxLength(40)]
         public string Adress
         {
             get { return _adress; }
@@ -78,6 +84,8 @@ namespace Pizzerior.ViewModels
                 SetProperty(ref _adress, value);
             }
         }
+
+
         private string _postNr;
         public string PostNr
         {
@@ -98,7 +106,7 @@ namespace Pizzerior.ViewModels
         }
 
         public string Error => null;
-
+        bool IsDirty { get; set; } = false;
         public string this[string columnName]
         {
             get
@@ -107,8 +115,12 @@ namespace Pizzerior.ViewModels
                 var results = new List<ValidationResult>();
                 if (!Validator.TryValidateProperty(GetType().GetProperty(columnName).GetValue(this, null), context, results))
                 {
+                    IsDirty = true;
                     return results[0].ErrorMessage;
+                    
                 }
+
+
                 return null;
             }
         }
@@ -119,6 +131,8 @@ namespace Pizzerior.ViewModels
         void CreatePizzeria()
         {
             string id = Guid.NewGuid().ToString();
+
+          
 
             if (string.IsNullOrEmpty(Namn))
             {

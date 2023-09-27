@@ -20,6 +20,7 @@
     <None Remove="Common\Resources\plus-circle-outline.png" />
     <None Remove="Common\Resources\plus-circle.png" />
     <None Remove="green.png" />
+    <None Remove="Views\green.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,6 +46,7 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="green.png" />
+    <Resource Include="Views\green.png" />
   </ItemGroup>
 
 </Project>

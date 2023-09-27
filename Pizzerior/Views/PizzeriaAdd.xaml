@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pizzerior.Views"
         mc:Ignorable="d"
-        Title="Skapa ny Pizzeria" Height="450" Width="800">
+        Title="Skapa ny Pizzeria" Height="450" Width="800" Icon="/Views/green.png">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -31,12 +31,14 @@
 
         <StackPanel Margin="0,8,0,0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Top" >
             <Label Content="Pizzerians namn" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="Auto" Padding="0,0,0,5"/>
-            <TextBox Name="txtNamn" Text="{Binding Namn, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" HorizontalAlignment="Stretch" MaxLength="40"  VerticalAlignment="Top" Width="Auto" Padding="7"/>
+            <TextBox x:Name="txtNamn"  Text="{Binding Namn, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" HorizontalAlignment="Stretch" MaxLength="40"  VerticalAlignment="Top" Width="Auto" Padding="7"/>
+            <TextBlock Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=txtNamn}" Foreground="Red" />
         </StackPanel>
 
         <StackPanel Margin="0,8,0,0" Grid.Row="2" Grid.ColumnSpan="2"  HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Top" >
             <Label Content="Gatuadress" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="Auto" Padding="0,0,0,5"/>
-            <TextBox Name="txtAdress" Text="{Binding Adress, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" HorizontalAlignment="Stretch" MaxLength="40"  VerticalAlignment="Top" Width="Auto" Padding="7"/>
+            <TextBox x:Name="txtAdress" Text="{Binding Adress, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" HorizontalAlignment="Stretch" MaxLength="40"  VerticalAlignment="Top" Width="Auto" Padding="7"/>
+            <TextBlock Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=txtAdress}" Foreground="Red" />
         </StackPanel>
 
         <StackPanel Margin="0,8,0,0" Grid.Row="3"  Grid.Column="0" HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Top" >
