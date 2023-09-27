@@ -1,5 +1,25 @@
 [
   {
+    "PizzeriaID": "bd958c68-85c1-4dc9-a774-9043948bae4d",
+    "Namn": "Kalles Goda Pizza",
+    "Adress": "Johannesdalsgatan 7",
+    "PostNr": "45589",
+    "PostOrt": "VÄSTERVIK",
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-27"
+  },
+  {
+    "PizzeriaID": "06552116-1942-47bf-a39a-b11b944078c0",
+    "Namn": "sdsdfs",
+    "Adress": null,
+    "PostNr": null,
+    "PostOrt": null,
+    "IntroBild": null,
+    "Skapad": "2023-09-27",
+    "Modifierad": "2023-09-27"
+  },
+  {
     "PizzeriaID": "0f7000d0-996e-4620-8717-523a1df4cc13",
     "Namn": "Peters Goda Pizza",
     "Adress": "Ringvägen 5",
@@ -15,16 +35,6 @@
     "Adress": "Nissevägen 22",
     "PostNr": "34566",
     "PostOrt": "VÄSTERÅS",
-    "IntroBild": null,
-    "Skapad": "2023-09-25",
-    "Modifierad": "2023-09-25"
-  },
-  {
-    "PizzeriaID": "bd958c68-85c1-4dc9-a774-9043948bae4d",
-    "Namn": "Kalles Goda Pizza",
-    "Adress": "Johannesdalsgatan 7",
-    "PostNr": "45589",
-    "PostOrt": "VÄSTERVIK",
     "IntroBild": null,
     "Skapad": "2023-09-25",
     "Modifierad": "2023-09-25"

@@ -15,6 +15,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Documents;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
+using Application = System.Windows.Application;
 
 namespace Pizzerior.ViewModels
 {
@@ -24,7 +26,7 @@ namespace Pizzerior.ViewModels
         [ObservableProperty]
         Pizzeria _pizzeria;
         IPizzeriaService _pizzeriaService;
-
+        private readonly Dictionary<string, List<string>> _errors = new Dictionary<string, List<string>>();
         public MainViewModel MainVM => ViewModelLocator.Instance.MainViewModel;
 
 
@@ -32,17 +34,17 @@ namespace Pizzerior.ViewModels
         {
             _pizzeriaService = new PizzeriaService();
             _pizzeria= new Pizzeria();
-             
+            
         }
 
 
 
-[RelayCommand]
+        [RelayCommand]
         void CloseWin()
         {
-             
             CloseWindow();
-        }
+        }             
+
 
         private void CloseWindow()
         {
@@ -67,8 +69,11 @@ namespace Pizzerior.ViewModels
             get { return _namn; }
             set
             {
-
-                SetProperty(ref _namn, value);
+                if (_namn != value)
+                {
+                    _namn = value;
+                    OnPropertyChanged(nameof(Namn));
+                }
             }
         }
 
@@ -81,7 +86,11 @@ namespace Pizzerior.ViewModels
             get { return _adress; }
             set
             {
-                SetProperty(ref _adress, value);
+                if (_adress != value)
+                {
+                    _adress = value;
+                    OnPropertyChanged(nameof(Adress));
+                }
             }
         }
 
@@ -92,7 +101,11 @@ namespace Pizzerior.ViewModels
             get { return _postNr; }
             set
             {
-                SetProperty(ref _postNr, value);
+                if (_postNr != value)
+                {
+                    _postNr = value;
+                    OnPropertyChanged(nameof(PostNr));
+                }
             }
         }
         private string _postOrt;
@@ -101,29 +114,60 @@ namespace Pizzerior.ViewModels
             get { return _postOrt; }
             set
             {
-                SetProperty(ref _postOrt, value);
+                if (_postOrt != value)
+                {
+                    _postOrt = value;
+                    OnPropertyChanged(nameof(PostOrt));
+                }
             }
         }
 
-        public string Error => null;
-        bool IsDirty { get; set; } = false;
+
+        #region " VALIDATION "
+
         public string this[string columnName]
         {
             get
             {
-                var context = new ValidationContext(this, null, null) { MemberName = columnName };
-                var results = new List<ValidationResult>();
-                if (!Validator.TryValidateProperty(GetType().GetProperty(columnName).GetValue(this, null), context, results))
+                var validationContext = new ValidationContext(this, null, null) { MemberName = columnName };
+                var validationResults = new List<ValidationResult>();
+                if (Validator.TryValidateProperty(GetType().GetProperty(columnName).GetValue(this), validationContext, validationResults))
                 {
-                    IsDirty = true;
-                    return results[0].ErrorMessage;
-                    
+                    if (_errors.ContainsKey(columnName))
+                        _errors.Remove(columnName);
+                    if(_errors!=null && _errors.Count > 0) { HasErrors = true; } else { HasErrors = false; }
+                    return null;
                 }
+                _errors[columnName] = validationResults.Select(r => r.ErrorMessage).ToList();
+                if (_errors != null && _errors.Count > 0) { HasErrors = true; } else { HasErrors = false; }
+                return validationResults.First().ErrorMessage;
 
 
-                return null;
             }
         }
+
+        public string Error
+        {
+            get { return null; }
+        }
+
+
+        private bool _hasErrors;
+
+        public bool HasErrors
+        {
+            get { return _hasErrors; }
+            set
+            {
+                if (_hasErrors != value)
+                {
+                    _hasErrors = value;
+                    OnPropertyChanged(nameof(HasErrors));
+                }
+            }
+        }
+
+        #endregion 
 
 
 
@@ -132,7 +176,7 @@ namespace Pizzerior.ViewModels
         {
             string id = Guid.NewGuid().ToString();
 
-          
+            MessageBox.Show(Error); 
 
             if (string.IsNullOrEmpty(Namn))
             {
@@ -176,8 +220,10 @@ namespace Pizzerior.ViewModels
 
         }
 
+   }
 
 
 
-    }
+
+ 
 }

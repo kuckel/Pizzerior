@@ -3,9 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Pizzerior.Views"
+        xmlns:local="clr-namespace:Pizzerior.Views" xmlns:local1="clr-namespace:Pizzerior.ViewModels"
         mc:Ignorable="d"
         Title="Skapa ny Pizzeria" Height="450" Width="800" Icon="/Views/green.png">
+
+    <Window.Resources>
+        <local1:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+    </Window.Resources>
+
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -31,19 +36,19 @@
 
         <StackPanel Margin="0,8,0,0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Top" >
             <Label Content="Pizzerians namn" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="Auto" Padding="0,0,0,5"/>
-            <TextBox x:Name="txtNamn"  Text="{Binding Namn, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" HorizontalAlignment="Stretch" MaxLength="40"  VerticalAlignment="Top" Width="Auto" Padding="7"/>
-            <TextBlock Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=txtNamn}" Foreground="Red" />
+            <TextBox Name="txtNamn"  Text="{Binding Namn, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" HorizontalAlignment="Stretch" MaxLength="40"  VerticalAlignment="Top" Width="Auto" Padding="7"/>
+            <TextBlock Text="{Binding Path=(Validation.Errors)/ErrorContent, ElementName=txtNamn}" Foreground="Red"  Padding="0,2,0,0"/>
         </StackPanel>
 
-        <StackPanel Margin="0,8,0,0" Grid.Row="2" Grid.ColumnSpan="2"  HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Top" >
+        <StackPanel Margin="0,5,0,0" Grid.Row="2" Grid.ColumnSpan="2"  HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Top" >
             <Label Content="Gatuadress" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="Auto" Padding="0,0,0,5"/>
-            <TextBox x:Name="txtAdress" Text="{Binding Adress, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay,ValidatesOnDataErrors=True,NotifyOnValidationError=True}" HorizontalAlignment="Stretch" MaxLength="40"  VerticalAlignment="Top" Width="Auto" Padding="7"/>
-            <TextBlock Text="{Binding (Validation.Errors)[0].ErrorContent, ElementName=txtAdress}" Foreground="Red" />
+            <TextBox Name="txtAdress" Text="{Binding Adress, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}" HorizontalAlignment="Stretch" MaxLength="40"  VerticalAlignment="Top" Width="Auto" Padding="7"/>
+            <TextBlock Text="{Binding Path=(Validation.Errors)/ErrorContent, ElementName=txtAdress}" Foreground="Red" Padding="0,2,0,0"/>
         </StackPanel>
 
         <StackPanel Margin="0,8,0,0" Grid.Row="3"  Grid.Column="0" HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Top" >
             <Label Content="Postnummer" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="Auto" Padding="0,0,0,5"/>
-            <TextBox Name="txtPostNr" Text="{Binding PostNr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True}"  HorizontalAlignment="Stretch" MaxLength="6"  VerticalAlignment="Top" Width="Auto" Padding="7"/>
+            <TextBox Name="txtPostNr" Text="{Binding PostNr, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Stretch" MaxLength="6"  VerticalAlignment="Top" Width="Auto" Padding="7"/>
         </StackPanel>
 
         <StackPanel Margin="8,8,0,0" Grid.Row="3" Grid.Column="1"  HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Top" >
@@ -52,7 +57,8 @@
         </StackPanel>
 
         <StackPanel Margin="0,10,5,10" Grid.Row="4"  Orientation = "Horizontal"  HorizontalAlignment="Left" Width="Auto" VerticalAlignment="Top" >
-            <Button x:Name="btnSave" Width="100" Style="{StaticResource GreenButtonStyle}" Command="{Binding CreatePizzeriaCommand}" Content=" Spara " Padding="7"  Cursor="Hand"></Button>
+            <Button x:Name="btnSave" Width="100" Style="{StaticResource GreenButtonStyle}" Command="{Binding CreatePizzeriaCommand}" 
+               IsEnabled="{Binding HasErrors, Converter={StaticResource InverseBooleanConverter}}"     Content=" Spara " Padding="7"  Cursor="Hand"></Button>
             <Button x:Name="btnClose" Width="90" Style="{StaticResource GreyButtonStyle}" Margin="15,0,0,0"  Content=" Stäng " Command="{Binding CloseWinCommand}" Padding="7"  Cursor="Hand" ></Button>
         </StackPanel> 
     </Grid>
