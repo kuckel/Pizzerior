@@ -14,6 +14,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Pizzerior.ViewModels
 {
@@ -113,7 +114,11 @@ namespace Pizzerior.ViewModels
             PizzeriaDetail win = new PizzeriaDetail();
             win.DataContext = wvm;
             wvm.SelectedPizzeria = pizzeria;
-            win.MaxHeight = 400; ;
+            wvm.Namn= pizzeria.Namn;
+            wvm.Adress = pizzeria.Adress;
+            wvm.PostNr = pizzeria.PostNr;
+            wvm.PostOrt = pizzeria.PostOrt;
+            win.MaxHeight = 400; 
             win.MaxWidth = 600;
             win.Owner = Application.Current.MainWindow;
             win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
