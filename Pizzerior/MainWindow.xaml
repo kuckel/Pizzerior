@@ -3,13 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Pizzerior"
+        xmlns:local="clr-namespace:Pizzerior" 
         xmlns:dc="clr-namespace:Pizzerior.ViewModels" d:DataContext="{d:DesignInstance Type=dc:MainViewModel}"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="PizzeriaGuiden" Height="600" Width="850" Icon="/green.png" MinWidth="850" MinHeight="600">
 
-    
-    
+    <Window.Resources>
+        <dc:ImageResourceConverter x:Key="ImageResourceConverter" />
+    </Window.Resources>        
+
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -78,8 +81,9 @@
                                  <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>                                     
-                                </Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                     </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="80" MaxWidth="80"/>                                    
                                     <ColumnDefinition Width="*" />
@@ -87,15 +91,15 @@
                                     
                                     
                                 <!-- Image -->
-                                <Image Source="/Common/Resources/Green.png"  Grid.Column="0" Grid.RowSpan="3"   HorizontalAlignment="Center"  VerticalAlignment="Center"   Stretch="None"  Height="Auto" >
+                                   <Image Source="{Binding IntroBild, Converter={StaticResource ImageResourceConverter}}" Stretch="UniformToFill"  Grid.Column="0" Grid.RowSpan="4"  Margin="0,0,7,0"  HorizontalAlignment="Center"  VerticalAlignment="Center"    Height="Auto" >
                                    <Image.ToolTip>
                                     <Binding Path="Namn" />
                                     </Image.ToolTip> 
                                  </Image>                                    
 
                                 <!-- rubrik Namn -->                               
-                                <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="0" Margin="0">
-                                                <Label Content="{Binding Namn}" Padding="0" FontWeight="Bold" Foreground="#297B52"></Label> 
+                                <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="0" Margin="0,3,0,0">
+                                   <Label Content="{Binding Namn}" Padding="0" FontWeight="Bold" Foreground="#297B52"></Label> 
                                 </StackPanel>
                                 <!-- Adress -->
                                  <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="1" Margin="0">

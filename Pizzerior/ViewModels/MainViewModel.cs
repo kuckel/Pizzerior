@@ -7,6 +7,7 @@ using Pizzerior.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Pizzerior.ViewModels
 {
@@ -109,6 +111,9 @@ namespace Pizzerior.ViewModels
         [RelayCommand]
         void Open(Pizzeria pizzeria)
         {
+            string pathToImages = Directory.GetCurrentDirectory() + @"\Images\";
+            string pizzaImage = pizzeria.IntroBild ?? "Missing-image.png";
+            var uri = new Uri(pathToImages + pizzaImage);
             StatusText = "Vald pizzeria: " + pizzeria.Namn; 
             PizzeriaViewModel wvm = new PizzeriaViewModel();
             PizzeriaDetail win = new PizzeriaDetail();
@@ -118,6 +123,7 @@ namespace Pizzerior.ViewModels
             wvm.Adress = pizzeria.Adress;
             wvm.PostNr = pizzeria.PostNr;
             wvm.PostOrt = pizzeria.PostOrt;
+            wvm.UploadedImage = new BitmapImage(uri);
             win.MaxHeight = 400; 
             win.MaxWidth = 600;
             win.Owner = Application.Current.MainWindow;

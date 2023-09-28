@@ -113,6 +113,7 @@ namespace Pizzerior.Services
                 p.Namn = pizzeria.Namn;
                 p.Adress = pizzeria.Adress;
                 p.PostNr = pizzeria.PostNr;
+                p.IntroBild = pizzeria.IntroBild;
                 p.Modifierad = DateTime.Now;
                 p.PostOrt = pizzeria.PostOrt;
             }
@@ -157,7 +158,7 @@ namespace Pizzerior.Services
 
         private string dataPath()
         {
-            return System.Configuration.ConfigurationManager.AppSettings["JsonDataPath"];
+            return Directory.GetCurrentDirectory() + @"\Data\data.json";
         }
 
 

@@ -1,6 +1,7 @@
 ﻿#nullable disable 
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Win32;
 using Pizzerior.Models;
 using Pizzerior.Services;
 using Pizzerior.Views;
@@ -8,10 +9,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using System.Xml.Linq;
 
 namespace Pizzerior.ViewModels
@@ -101,6 +104,9 @@ namespace Pizzerior.ViewModels
         }
 
 
+
+        public string IntroBild { get; set; }
+
         [RelayCommand]
         public void DoSave()
         {
@@ -108,7 +114,8 @@ namespace Pizzerior.ViewModels
             _selectedPizzeria.Namn = Namn;
             _selectedPizzeria.Adress = Adress;
             _selectedPizzeria.PostOrt = PostOrt;
-            _selectedPizzeria.PostNr = PostNr; 
+            _selectedPizzeria.PostNr = PostNr;
+            _selectedPizzeria.IntroBild = IntroBild;
             Pizzeria upPizzeria = _pizzeriaService.Update(_selectedPizzeria);
             if(upPizzeria!=null)
             {
@@ -216,6 +223,79 @@ namespace Pizzerior.ViewModels
 
             }
         }
+
+
+        #region " BILDUPPLADDNING "
+
+        private BitmapImage _uploadedImage;
+        public BitmapImage UploadedImage
+        {
+            get => _uploadedImage;
+            set => SetProperty(ref _uploadedImage, value);
+        }
+
+        [RelayCommand]
+        private void UploadImage()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.png;*.jpg;*.jpeg;*.gif)|*.png;*.jpg;*.jpeg;*.gif";
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    BitmapImage bitmapImage = new BitmapImage(new Uri(openFileDialog.FileName));
+                    UploadedImage = bitmapImage;
+                    SaveImage(openFileDialog.FileName);
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show($"Error loading image: {ex.Message}"); 
+                }
+            }
+        }
+
+        private void SaveImage(string pathToImage)
+        {
+
+            try
+            {
+                BitmapEncoder encoder = null;
+                string selectedFilter = Path.GetExtension(pathToImage);
+                if (selectedFilter == ".png")
+                    encoder = new PngBitmapEncoder();
+                else if (selectedFilter == ".jpeg")
+                    encoder = new JpegBitmapEncoder();
+                else if (selectedFilter == ".jpg")
+                    encoder = new JpegBitmapEncoder();
+                else if (selectedFilter == ".gif")
+                    encoder = new GifBitmapEncoder();
+
+                encoder.Frames.Add(BitmapFrame.Create(UploadedImage));
+                string pathToImages = Directory.GetCurrentDirectory() + @"\Images\";
+
+                var fileNameToSave = _selectedPizzeria.PizzeriaID + selectedFilter;
+                File.Copy(pathToImage, pathToImages + fileNameToSave, true);
+                if (!File.Exists(pathToImages + fileNameToSave))
+                {
+                    MessageBox.Show("Bilden misslyckades att kopieras till utsatt mapp", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                else
+                {
+                    IntroBild = fileNameToSave;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }               
+
+        }
+
+        #endregion 
 
     }
 }
