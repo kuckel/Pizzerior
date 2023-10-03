@@ -1,0 +1,172 @@
+[
+  {
+    "PizzeriaID": "0f7000d0-996e-4620-8717-523a1df4cc13",
+    "Namn": "Peters Goda Pizza",
+    "Adress": "Ringvägen 5",
+    "PostNr": "456 89",
+    "PostOrt": "LINKÖPING",
+    "Betyg": 0,
+    "IntroBild": "0f7000d0-996e-4620-8717-523a1df4cc13.jpg",
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-10-03",
+    "Omdomen": [
+      {
+        "OmdomeID": "sdafsdfs7fs5f5dfghf2233",
+        "PizzeriaID_Ref": "0f7000d0-996e-4620-8717-523a1df4cc13",
+        "Namn": null,
+        "Epost": "Svens@test.se",
+        "Betyg": 1,
+        "Skapad": "0001-01-01",
+        "Modifierad": "0001-01-01"
+      },
+      {
+        "OmdomeID": "sdafsdfs7fs5f5dfghf2233",
+        "PizzeriaID_Ref": "0f7000d0-996e-4620-8717-523a1df4cc13",
+        "Namn": null,
+        "Epost": "Svens@test.se",
+        "Betyg": 1,
+        "Skapad": "0001-01-01",
+        "Modifierad": "0001-01-01"
+      },
+      {
+        "OmdomeID": "sdafsdfs7fs5f5dfghf288X2",
+        "PizzeriaID_Ref": "0f7000d0-996e-4620-8717-523a1df4cc13",
+        "Namn": null,
+        "Epost": "Nisse@test.se",
+        "Betyg": 3,
+        "Skapad": "0001-01-01",
+        "Modifierad": "0001-01-01"
+      },
+      {
+        "OmdomeID": "sdafsdfs7fs5f5dfghf2233",
+        "PizzeriaID_Ref": "0f7000d0-996e-4620-8717-523a1df4cc13",
+        "Namn": null,
+        "Epost": "Svens@test.se",
+        "Betyg": 1,
+        "Skapad": "0001-01-01",
+        "Modifierad": "0001-01-01"
+      },
+      {
+        "OmdomeID": "sdafsdfs7fs5f5dfghf2233",
+        "PizzeriaID_Ref": "0f7000d0-996e-4620-8717-523a1df4cc13",
+        "Namn": null,
+        "Epost": "Svens@test.se",
+        "Betyg": 1,
+        "Skapad": "0001-01-01",
+        "Modifierad": "0001-01-01"
+      },
+      {
+        "OmdomeID": "sdafsdfs7fs5f5dfghf288X2",
+        "PizzeriaID_Ref": "0f7000d0-996e-4620-8717-523a1df4cc13",
+        "Namn": null,
+        "Epost": "Nisse@test.se",
+        "Betyg": 3,
+        "Skapad": "0001-01-01",
+        "Modifierad": "0001-01-01"
+      }
+    ]
+  },
+  {
+    "PizzeriaID": "554b1e18-8e7e-4e9f-8971-f26855f7c568",
+    "Namn": "Åkes SpecialPizzor",
+    "Adress": "Åkegatan 14",
+    "PostNr": "345 67",
+    "PostOrt": "SUNDSVALL",
+    "Betyg": 0,
+    "IntroBild": "554b1e18-8e7e-4e9f-8971-f26855f7c568.jpg",
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-10-03",
+    "Omdomen": []
+  },
+  {
+    "PizzeriaID": "37f31eef-8cf2-4a7e-9077-f102df234cfe",
+    "Namn": "Fredriks Skitgoda Pizza",
+    "Adress": "Kvarngatan 12",
+    "PostNr": "687 90",
+    "PostOrt": "KÄVLINGE",
+    "Betyg": 0,
+    "IntroBild": "37f31eef-8cf2-4a7e-9077-f102df234cfe.jpg",
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-10-03",
+    "Omdomen": []
+  },
+  {
+    "PizzeriaID": "c436ed66-997d-4936-82b9-586c5c9e4c36",
+    "Namn": "Viktors Äckliga Pizza",
+    "Adress": "Lortvägen 2",
+    "PostNr": "455 88",
+    "PostOrt": "ARBOGA",
+    "Betyg": 0,
+    "IntroBild": "c436ed66-997d-4936-82b9-586c5c9e4c36.jpg",
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-10-03",
+    "Omdomen": []
+  },
+  {
+    "PizzeriaID": "4717f741-eb45-4196-aead-ba8407270161",
+    "Namn": "Nisses Enormt Goda Pizzor",
+    "Adress": "Nissevägen 22",
+    "PostNr": "345 66",
+    "PostOrt": "VÄSTERÅS",
+    "Betyg": 0,
+    "IntroBild": "4717f741-eb45-4196-aead-ba8407270161.jpg",
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-10-03",
+    "Omdomen": [
+      {
+        "OmdomeID": "sdafsdfs7fs5f5sd8fgd0g",
+        "PizzeriaID_Ref": "4717f741-eb45-4196-aead-ba8407270161",
+        "Namn": null,
+        "Epost": "Peter@test.se",
+        "Betyg": 4,
+        "Skapad": "0001-01-01",
+        "Modifierad": "0001-01-01"
+      },
+      {
+        "OmdomeID": "sdafsdfs7fs5f5sd8fgd0g",
+        "PizzeriaID_Ref": "4717f741-eb45-4196-aead-ba8407270161",
+        "Namn": null,
+        "Epost": "Peter@test.se",
+        "Betyg": 4,
+        "Skapad": "0001-01-01",
+        "Modifierad": "0001-01-01"
+      }
+    ]
+  },
+  {
+    "PizzeriaID": "bd958c68-85c1-4dc9-a774-9043948bae4d",
+    "Namn": "Kalles Goda Pizza",
+    "Adress": "Johannesdalsgatan 7",
+    "PostNr": "567 89",
+    "PostOrt": "VÄSTERVIK",
+    "Betyg": 0,
+    "IntroBild": "bd958c68-85c1-4dc9-a774-9043948bae4d.jpg",
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-28",
+    "Omdomen": []
+  },
+  {
+    "PizzeriaID": "0b95d3bc-a5c1-40f5-af67-e9cfeda465ce",
+    "Namn": "Åkes Enormt Slemmiga Pizza",
+    "Adress": "Slemvägen 11",
+    "PostNr": "244 77",
+    "PostOrt": "MARIESTAD",
+    "Betyg": 0,
+    "IntroBild": "0b95d3bc-a5c1-40f5-af67-e9cfeda465ce.jpg",
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-10-03",
+    "Omdomen": []
+  },
+  {
+    "PizzeriaID": "0b95d3bc-a5c1-40f5-af67-e9cfeda465ce",
+    "Namn": "Åkes Fruktansvärda Pizzor",
+    "Adress": "Slemvägen 11",
+    "PostNr": "244 77",
+    "PostOrt": "MARIESTAD",
+    "Betyg": 0,
+    "IntroBild": null,
+    "Skapad": "2023-09-25",
+    "Modifierad": "2023-09-25",
+    "Omdomen": []
+  }
+]
