@@ -24,6 +24,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="bin\Debug\net6.0-windows\Data\data.json" />
+    <Content Include="bin\Debug\net6.0-windows\Images\0b95d3bc-a5c1-40f5-af67-e9cfeda465ce.jpg" />
+    <Content Include="bin\Debug\net6.0-windows\Images\0b95d3bc-a5c1-40f5-af67-e9cfeda465ce.png" />
+    <Content Include="bin\Debug\net6.0-windows\Images\0f7000d0-996e-4620-8717-523a1df4cc13.jpg" />
+    <Content Include="bin\Debug\net6.0-windows\Images\37f31eef-8cf2-4a7e-9077-f102df234cfe.jpg" />
+    <Content Include="bin\Debug\net6.0-windows\Images\4717f741-eb45-4196-aead-ba8407270161.jpg" />
+    <Content Include="bin\Debug\net6.0-windows\Images\554b1e18-8e7e-4e9f-8971-f26855f7c568.jpg" />
+    <Content Include="bin\Debug\net6.0-windows\Images\bd958c68-85c1-4dc9-a774-9043948bae4d.jpg" />
+    <Content Include="bin\Debug\net6.0-windows\Images\bd958c68-85c1-4dc9-a774-9043948bae4d.png" />
+    <Content Include="bin\Debug\net6.0-windows\Images\c436ed66-997d-4936-82b9-586c5c9e4c36.jpg" />
+    <Content Include="bin\Debug\net6.0-windows\Images\Missing-image.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
@@ -59,6 +73,10 @@
     <None Update="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Logs\" />
   </ItemGroup>
 
 </Project>

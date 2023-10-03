@@ -4,8 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:b="http://schemas.microsoft.com/xaml/behaviors" xmlns:viewmodels="clr-namespace:Pizzerior.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:PizzeriaViewModel}"
-        mc:Ignorable="d" MaxHeight="350" MaxWidth="600"
-      d:DesignHeight="450" d:DesignWidth="800" MinHeight="350" MinWidth="600"
+        mc:Ignorable="d" MaxHeight="330" MaxWidth="600"
+      d:DesignHeight="450" d:DesignWidth="800" MinHeight="330" MinWidth="600"
       Title="{Binding SelectedPizzeria.Namn}" Icon="/Views/green.png">
 
     <Window.Resources>
@@ -18,7 +18,7 @@
             <RowDefinition Height="65"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="70"/>
                      
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -83,4 +83,14 @@
 
 
     </Grid>
+
+    <Window.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="Betygsätt" Command="{Binding OpenRateCommand}"/>
+            <MenuItem Header="Spara"  Command="{Binding DoSaveCommand}"/>
+            <MenuItem Header="Radera"  Command="{Binding DeleteCommand}"/>            
+            <Separator/>
+            <MenuItem Header="Avsluta"  Command="{Binding CloseWinCommand}"/>
+        </ContextMenu>
+    </Window.ContextMenu>
 </Window>

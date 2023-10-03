@@ -106,17 +106,24 @@ namespace Pizzerior.ViewModels
             }
         }
 
-        //private List<Omdome> Test(Pizzeria pizzeria)
-        //{
-        // List<Omdome> omdomesLista = new List<Omdome>();
-        //  Omdome om = new Omdome();
-        //    om.OmdomeID = "sdafsdfs7fs5f5dfghf288X2";
-        //    om.PizzeriaID_Ref = pizzeria.PizzeriaID; 
-        //    om.Epost = "Nisse@test.se";
-        //    om.Betyg = 3;
-        //    omdomesLista.Add (om);
-        //    return omdomesLista;
-        //}            
+          
+
+        [RelayCommand]
+        public void OpenRate()
+        {
+            
+            RatePizzeriaViewModel wvm = new RatePizzeriaViewModel();
+            RatePizzeria win = new RatePizzeria();
+            win.DataContext = wvm;
+            wvm._selectedPizzeria = _selectedPizzeria;
+            win.MaxHeight = 400; ;
+            win.MaxWidth = 600;
+            win.Owner = Application.Current.MainWindow;
+            win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            win.ShowDialog();
+
+
+        }
 
 
 
@@ -130,7 +137,11 @@ namespace Pizzerior.ViewModels
             _selectedPizzeria.Adress = Adress;
             _selectedPizzeria.PostOrt = PostOrt;
             _selectedPizzeria.PostNr = PostNr;
-            _selectedPizzeria.IntroBild = IntroBild;
+            if (!string.IsNullOrEmpty(IntroBild))
+            {
+             _selectedPizzeria.IntroBild = IntroBild;              
+            }
+
             
             Pizzeria upPizzeria = _pizzeriaService.Update(_selectedPizzeria);
             if(upPizzeria!=null)
@@ -220,10 +231,10 @@ namespace Pizzerior.ViewModels
         [RelayCommand]
         void CloseWin()
         {
-            
-
             CloseWindow();
-        }
+        }            
+
+
 
         private void CloseWindow()
         {

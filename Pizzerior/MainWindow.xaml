@@ -138,14 +138,7 @@
                     <ItemsControl.ItemContainerStyle>
                         <Style TargetType="ContentPresenter">
                             <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                             <Setter Property="ContextMenu">
-                                <Setter.Value>
-                                    <ContextMenu Name="cMenu">
-                                        <MenuItem Header="Betygsätt" Command="{Binding DataContext.RateCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" />
-                                        <MenuItem Header="Öppna Pizzeria"   />
-                                    </ContextMenu>
-                                </Setter.Value>
-                            </Setter>                           
+                          
                             
                         </Style>
 
