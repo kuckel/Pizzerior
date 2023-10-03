@@ -26,6 +26,7 @@ namespace Pizzerior.ViewModels
         [ObservableProperty]
         Pizzeria _pizzeria;
         IPizzeriaService _pizzeriaService;
+        ILoggerService _loggerService;
         private readonly Dictionary<string, List<string>> _errors = new Dictionary<string, List<string>>();
         public MainViewModel MainVM => ViewModelLocator.Instance.MainViewModel;
 
@@ -34,9 +35,8 @@ namespace Pizzerior.ViewModels
         {
             _pizzeriaService = new PizzeriaService();
             _pizzeria= new Pizzeria();
-            
-        }
-
+            _loggerService = new LoggerService(); 
+       }
 
 
         [RelayCommand]
@@ -206,15 +206,15 @@ namespace Pizzerior.ViewModels
             if (result)
             {
                 MainVM.ReloadCommand.Execute(null) ;
-                //MainVM.pizzerior.Add(_pizzeria);
-
                 CloseWin();
             }
             else
             {
                 MessageBox.Show("Ett fel uppstod när pizzerian skulle skapas", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
-            }
+            }                
+
+
 
 
 

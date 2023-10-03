@@ -103,6 +103,42 @@
         "Betyg": 1,
         "Skapad": "2023-10-03",
         "Modifierad": "2023-10-03"
+      },
+      {
+        "OmdomeID": "175aec98-c7b4-4a89-8633-fea5fdb48891",
+        "PizzeriaID_Ref": "554b1e18-8e7e-4e9f-8971-f26855f7c568",
+        "Namn": "Nisse",
+        "Epost": "Nisse@test.se",
+        "Betyg": 4,
+        "Skapad": "2023-10-03",
+        "Modifierad": "2023-10-03"
+      },
+      {
+        "OmdomeID": "175aec98-c7b4-4a89-8633-fea5fdb48891",
+        "PizzeriaID_Ref": "554b1e18-8e7e-4e9f-8971-f26855f7c568",
+        "Namn": "Nisse",
+        "Epost": "Nisse@test.se",
+        "Betyg": 4,
+        "Skapad": "2023-10-03",
+        "Modifierad": "2023-10-03"
+      },
+      {
+        "OmdomeID": "7a771a97-80df-400b-a514-6fe571c4ad48",
+        "PizzeriaID_Ref": "554b1e18-8e7e-4e9f-8971-f26855f7c568",
+        "Namn": "Kalle",
+        "Epost": "Kalle@test.se",
+        "Betyg": 1,
+        "Skapad": "2023-10-03",
+        "Modifierad": "2023-10-03"
+      },
+      {
+        "OmdomeID": "6bf68518-cebe-43b4-b654-931f950f2bd5",
+        "PizzeriaID_Ref": "554b1e18-8e7e-4e9f-8971-f26855f7c568",
+        "Namn": "fghfghfgh",
+        "Epost": "fghfghfgh",
+        "Betyg": 1,
+        "Skapad": "2023-10-03",
+        "Modifierad": "2023-10-03"
       }
     ]
   },
@@ -116,7 +152,17 @@
     "IntroBild": "37f31eef-8cf2-4a7e-9077-f102df234cfe.jpg",
     "Skapad": "2023-09-25",
     "Modifierad": "2023-10-03",
-    "Omdomen": []
+    "Omdomen": [
+      {
+        "OmdomeID": "2825aa59-d390-4518-8397-5fc4a19e0319",
+        "PizzeriaID_Ref": "37f31eef-8cf2-4a7e-9077-f102df234cfe",
+        "Namn": "Viktor",
+        "Epost": "viktor@test.se",
+        "Betyg": 4,
+        "Skapad": "2023-10-03",
+        "Modifierad": "2023-10-03"
+      }
+    ]
   },
   {
     "PizzeriaID": "c436ed66-997d-4936-82b9-586c5c9e4c36",
@@ -158,6 +204,33 @@
         "Betyg": 4,
         "Skapad": "0001-01-01",
         "Modifierad": "0001-01-01"
+      },
+      {
+        "OmdomeID": "sdafsdfs7fs5f5sd8fgd0g",
+        "PizzeriaID_Ref": "4717f741-eb45-4196-aead-ba8407270161",
+        "Namn": null,
+        "Epost": "Peter@test.se",
+        "Betyg": 4,
+        "Skapad": "0001-01-01",
+        "Modifierad": "0001-01-01"
+      },
+      {
+        "OmdomeID": "sdafsdfs7fs5f5sd8fgd0g",
+        "PizzeriaID_Ref": "4717f741-eb45-4196-aead-ba8407270161",
+        "Namn": null,
+        "Epost": "Peter@test.se",
+        "Betyg": 4,
+        "Skapad": "0001-01-01",
+        "Modifierad": "0001-01-01"
+      },
+      {
+        "OmdomeID": "9286a5cd-a7f3-4bd3-b9a0-3f3793eb1abc",
+        "PizzeriaID_Ref": "4717f741-eb45-4196-aead-ba8407270161",
+        "Namn": "asdasd",
+        "Epost": "sdfsdf@test.se",
+        "Betyg": 4,
+        "Skapad": "2023-10-03",
+        "Modifierad": "2023-10-03"
       }
     ]
   },

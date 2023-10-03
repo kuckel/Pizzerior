@@ -36,13 +36,21 @@ namespace Pizzerior.Services
 
         public List<Pizzeria> GetAll()
         {
-            if(File.Exists(dataPath()) )
+            try
             {
-                string json = File.ReadAllText(dataPath());
-                return DeserializeFromJson<List<Pizzeria>>(json);
+                if (File.Exists(dataPath()))
+                {
+                    string json = File.ReadAllText(dataPath());
+                    return DeserializeFromJson<List<Pizzeria>>(json);
+                }
+                else
+                {
+                    return null;
+                }
             }
-            else
+            catch (Exception ex)
             {
+                _loggerService.LogError(System.Reflection.MethodBase.GetCurrentMethod().Name, ex);
                 return null;
             }
 
@@ -62,35 +70,51 @@ namespace Pizzerior.Services
 
         public ObservableCollection<Pizzeria> GetAllCollection()
         {
-            ObservableCollection<Pizzeria> tmpColList= new ObservableCollection<Pizzeria>();
-            List<Pizzeria> tmpList = GetAll();
-            if (tmpList != null && tmpList.Count > 0)
+            try
             {
-                tmpList.ForEach(x => tmpColList.Add(x));
-            } 
-            
-            foreach (Pizzeria piz in tmpColList)
-            {
-                if (piz.Omdomen != null && piz.Omdomen.Count > 0)
+                ObservableCollection<Pizzeria> tmpColList = new ObservableCollection<Pizzeria>();
+                List<Pizzeria> tmpList = GetAll();
+                if (tmpList != null && tmpList.Count > 0)
                 {
-                    int sumBetyg = piz.Omdomen.Sum(x => x.Betyg);
-                    int sumDeltagare = piz.Omdomen.Count();
-                    if (sumBetyg != 0 && sumBetyg != 0)
+                    tmpList.ForEach(x => tmpColList.Add(x));
+                }
+
+                foreach (Pizzeria piz in tmpColList)
+                {
+                    if (piz.Omdomen != null && piz.Omdomen.Count > 0)
                     {
-                        piz.Betyg = (sumBetyg / sumDeltagare);
+                        int sumBetyg = piz.Omdomen.Sum(x => x.Betyg);
+                        int sumDeltagare = piz.Omdomen.Count();
+                        if (sumBetyg != 0 && sumBetyg != 0)
+                        {
+                            piz.Betyg = (sumBetyg / sumDeltagare);
+                        }
                     }
                 }
+                return tmpColList;
             }
-
-            return tmpColList;
+            catch (Exception ex)
+            {
+                _loggerService.LogError(System.Reflection.MethodBase.GetCurrentMethod().Name, ex);
+                return null;
+            }
+ 
        }
 
  
 
         public Pizzeria Get(string id)
         {
-            string json = File.ReadAllText(dataPath());
-            return DeserializeFromJson<List<Pizzeria>>(json).Where(x=>x.PizzeriaID == id).FirstOrDefault() ;
+            try
+            {
+                string json = File.ReadAllText(dataPath());
+                return DeserializeFromJson<List<Pizzeria>>(json).Where(x => x.PizzeriaID == id).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                _loggerService.LogError(System.Reflection.MethodBase.GetCurrentMethod().Name, ex);
+                return null;
+            }
         }
 
         public bool Create(Pizzeria pizza)
@@ -171,21 +195,29 @@ namespace Pizzerior.Services
 
         public bool Delete(string id)
         {
-            List<Pizzeria> tmpList = GetAll().OrderByDescending(x => x.Modifierad).ToList();
-            if (tmpList != null)
+            try
             {
-                Pizzeria pizzeria = tmpList.Where(x => x.PizzeriaID == id).FirstOrDefault();
-                tmpList.Remove(pizzeria);
-                var json = SerializeToJson(tmpList);
-                if (!string.IsNullOrEmpty(json))
+                List<Pizzeria> tmpList = GetAll().OrderByDescending(x => x.Modifierad).ToList();
+                if (tmpList != null)
                 {
-                    File.Delete(dataPath());
-                    SaveJsonAsFile(json, dataPath());
-                    return true;
+                    Pizzeria pizzeria = tmpList.Where(x => x.PizzeriaID == id).FirstOrDefault();
+                    tmpList.Remove(pizzeria);
+                    var json = SerializeToJson(tmpList);
+                    if (!string.IsNullOrEmpty(json))
+                    {
+                        File.Delete(dataPath());
+                        SaveJsonAsFile(json, dataPath());
+                        return true;
+                    }
+                    else { return false; }
                 }
                 else { return false; }
             }
-            else { return false; }
+            catch (Exception ex)
+            {
+                _loggerService.LogError(System.Reflection.MethodBase.GetCurrentMethod().Name,ex);
+                return false;
+            }
 
         }
 
