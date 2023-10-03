@@ -64,9 +64,22 @@ namespace Pizzerior.Services
             List<Pizzeria> tmpList = GetAll();
             if (tmpList != null && tmpList.Count > 0)
             {
-                
                 tmpList.ForEach(x => tmpColList.Add(x));
+            } 
+            
+            foreach (Pizzeria piz in tmpColList)
+            {
+                if (piz.Omdomen != null && piz.Omdomen.Count > 0)
+                {
+                    int sumBetyg = piz.Omdomen.Sum(x => x.Betyg);
+                    int sumDeltagare = piz.Omdomen.Count();
+                    if (sumBetyg != 0 && sumBetyg != 0)
+                    {
+                        piz.Betyg = (sumBetyg / sumDeltagare);
+                    }
+                }
             }
+
             return tmpColList;
        }
 
@@ -116,6 +129,18 @@ namespace Pizzerior.Services
                 p.IntroBild = pizzeria.IntroBild;
                 p.Modifierad = DateTime.Now;
                 p.PostOrt = pizzeria.PostOrt;
+                if (p.Omdomen != null && p.Omdomen.Count > 0)
+                {
+                    foreach (Omdome omd in pizzeria.Omdomen) 
+                    {
+                        p.Omdomen.Add(omd); 
+                    }
+                }
+                else
+                {
+                    p.Omdomen = new List<Omdome >();    
+                }
+
             }
             else 
             {

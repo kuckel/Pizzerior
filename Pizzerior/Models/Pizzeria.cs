@@ -24,12 +24,14 @@ namespace Pizzerior.Models
         public string Adress { get; set; }
         public string PostNr { get; set; }
         public string PostOrt { get; set; }
+        public int Betyg { get; set; } = 0;
         public string IntroBild { get; set; }
         public DateTime Skapad { get; set; }
         public DateTime Modifierad { get; set; }
-        List<Omdome> Omdomen { get; set; }
+        //List<Omdome> Omdomen { get; set; }
+        public virtual ICollection<Omdome> Omdomen { get; set; } = new List<Omdome>();
 
-    }       
+    }
 
 
 

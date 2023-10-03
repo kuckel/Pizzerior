@@ -4,14 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pizzerior" 
-        xmlns:dc="clr-namespace:Pizzerior.ViewModels" d:DataContext="{d:DesignInstance Type=dc:MainViewModel}"
+        xmlns:dc="clr-namespace:Pizzerior" xmlns:dc1="clr-namespace:Pizzerior.ViewModels"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="PizzeriaGuiden" Height="600" Width="850" Icon="/green.png" MinWidth="850" MinHeight="600">
+        Title="PizzeriaGuiden" Height="600" Width="850"  MinWidth="850" MinHeight="600">
 
     <Window.Resources>
-        <dc:ImageResourceConverter x:Key="ImageResourceConverter" />
-    </Window.Resources>        
-
+        <dc1:ImageResourceConverter x:Key="ImageResourceConverter" />
+    </Window.Resources>
+    <Window.DataContext>
+        <dc1:MainViewModel></dc1:MainViewModel>  
+    </Window.DataContext>  
+ 
 
     <Grid>
         <Grid.RowDefinitions>
@@ -52,7 +55,7 @@
 
 
         <!-- Grid Start -->
-        <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="#F3F3F3">
+        <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="#F3F3F3" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
@@ -63,6 +66,7 @@
                 <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="0" Grid.Column="0">
 
                 <ItemsControl x:Name="itmList"  ItemsSource="{Binding Pizzerior}"  HorizontalAlignment="Stretch" Width="Auto" Grid.Column="0" Grid.Row="0">
+                    
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate >
                             <UniformGrid Columns="2"  Width="Auto" HorizontalAlignment="Stretch"  VerticalAlignment="Top"  Height="Auto"  Margin="2" />
@@ -71,27 +75,28 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
 
-                            <Border BorderBrush="#DBDBDB" BorderThickness="1"  VerticalAlignment="Top" Width="Auto"  HorizontalAlignment="Stretch" Margin="5" >
+                                <Border BorderBrush="#DBDBDB" BorderThickness="1"  VerticalAlignment="Top" Width="Auto"  HorizontalAlignment="Stretch" Margin="5" >
 
-                                <DockPanel  HorizontalAlignment="Stretch" Background="white"  Height="70" MaxHeight="100" Width="Auto" >
+                                <DockPanel  HorizontalAlignment="Stretch" Background="white"  Height="100" MaxHeight="100" Width="Auto" >
                                     <Button Background="Transparent" Cursor="Hand" BorderThickness="0"  Width="Auto"  CommandParameter="{Binding}" HorizontalContentAlignment="Left"   DockPanel.Dock="Left" HorizontalAlignment="Stretch"   
                                         Command="{Binding DataContext.OpenCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}">
 
-                                        <Grid HorizontalAlignment="Left" > 
+                                 <Grid HorizontalAlignment="Left"  Height="100"> 
                                  <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                     </Grid.RowDefinitions>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="15"/>
+                                    <RowDefinition Height="20"/>
+                                            </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="80" MaxWidth="80"/>                                    
+                                    <ColumnDefinition Width="120" MaxWidth="120"/>                                    
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                     
                                     
                                 <!-- Image -->
-                                   <Image Source="{Binding IntroBild, Converter={StaticResource ImageResourceConverter}}" Stretch="UniformToFill"  Grid.Column="0" Grid.RowSpan="4"  Margin="0,0,7,0"  HorizontalAlignment="Center"  VerticalAlignment="Center"    Height="Auto" >
+                                   <Image Source="{Binding IntroBild, Converter={StaticResource ImageResourceConverter}}" Stretch="UniformToFill"  Grid.Column="0" Grid.RowSpan="5"  Margin="0,0,7,0"  HorizontalAlignment="Center"  VerticalAlignment="Center" Width="120" >
                                    <Image.ToolTip>
                                     <Binding Path="Namn" />
                                     </Image.ToolTip> 
@@ -106,13 +111,16 @@
                                      <Label Content="{Binding Adress}" Padding="0" FontWeight="Normal"></Label> 
                                 </StackPanel>
                                  <!-- PostNr & Ort  -->
-                                 <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="2" Margin="0">
+                                 <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" Grid.Column="1" VerticalAlignment="Top" Grid.Row="2" Margin="0">
                                   <Label Content="{Binding PostNr}" Padding="0" FontWeight="Normal"></Label>
                                   <Label Content="{Binding PostOrt}" Padding="7,0,0,0" FontWeight="Normal"></Label>
                                 </StackPanel>
+                                 <!-- Betyg -->
+                                 <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" Margin="0">
+                                    <Label Content="{Binding Betyg}" Padding="0"></Label>        
+                                 </StackPanel> 
 
-
-                                </Grid>
+                                 </Grid>
                           
                             </Button>
                                 </DockPanel>
@@ -123,24 +131,48 @@
          
                             </Border>
 
+
+
                         </DataTemplate>
                 </ItemsControl.ItemTemplate>
                     <ItemsControl.ItemContainerStyle>
                         <Style TargetType="ContentPresenter">
                             <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                                                    
+                             <Setter Property="ContextMenu">
+                                <Setter.Value>
+                                    <ContextMenu Name="cMenu">
+                                        <MenuItem Header="Betygsätt" Command="{Binding DataContext.RateCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}" />
+                                        <MenuItem Header="Öppna Pizzeria"   />
+                                    </ContextMenu>
+                                </Setter.Value>
+                            </Setter>                           
+                            
                         </Style>
-                    </ItemsControl.ItemContainerStyle>
-                </ItemsControl>
 
+                       
+
+                       
+
+                    </ItemsControl.ItemContainerStyle>
+           
+                 </ItemsControl>
+                    
                 </ScrollViewer> 
-        </Grid>
+            
+        </Grid>                   
+                    
+
+
 
 
         <Border BorderBrush="#DBDBDB" BorderThickness="0,1,0,0" VerticalAlignment="Top" Width="Auto"  HorizontalAlignment="Stretch" Grid.Row="4" Grid.ColumnSpan="3"></Border>
         <StackPanel Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Row="4" Grid.ColumnSpan="3"  Width="Auto" Margin="0">
             <Label Content="{Binding StatusText}" x:Name="lblStatus"></Label> 
-        </StackPanel> 
+        </StackPanel>
 
     </Grid>
+
+
+
+
 </Window>

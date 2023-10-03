@@ -26,6 +26,8 @@ namespace Pizzerior.ViewModels
        
         private ObservableCollection<Pizzeria> _pizzerior { get; set; }
         private readonly IPizzeriaService _pizzeriaService;
+        
+
 
         public ObservableCollection<Pizzeria> Pizzerior 
         {
@@ -63,14 +65,23 @@ namespace Pizzerior.ViewModels
 
         public MainViewModel()
         {
+            log4net.Config.XmlConfigurator.Configure();
             _selectedPizzeria = new Pizzeria();
             Pizzerior = new ObservableCollection<Pizzeria>();
             _pizzeriaService = new PizzeriaService();
             Pizzerior = _pizzeriaService.GetAllCollection();
             StatusText = "Antal pizzerior: " + Pizzerior.Count();
+            
+
         }
 
 
+        [RelayCommand]
+        public void Rate()
+        {
+            MessageBox.Show("Rate");  
+            //Pizzeria pizzeria = _selectedPizzeria; 
+        }
 
 
         [RelayCommand]

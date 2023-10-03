@@ -24,6 +24,7 @@ namespace Pizzerior.ViewModels
         private readonly IPizzeriaService _pizzeriaService;
         public MainViewModel MainVM => ViewModelLocator.Instance.MainViewModel;
         private readonly Dictionary<string, List<string>> _errors = new Dictionary<string, List<string>>();
+        ILoggerService _loggerService;
 
         [ObservableProperty]
         public Pizzeria _selectedPizzeria;
@@ -31,6 +32,8 @@ namespace Pizzerior.ViewModels
         public PizzeriaViewModel()
         {
             _pizzeriaService = new PizzeriaService();
+            _loggerService = new LoggerService();
+
              
         }
 
@@ -103,6 +106,18 @@ namespace Pizzerior.ViewModels
             }
         }
 
+        //private List<Omdome> Test(Pizzeria pizzeria)
+        //{
+        // List<Omdome> omdomesLista = new List<Omdome>();
+        //  Omdome om = new Omdome();
+        //    om.OmdomeID = "sdafsdfs7fs5f5dfghf288X2";
+        //    om.PizzeriaID_Ref = pizzeria.PizzeriaID; 
+        //    om.Epost = "Nisse@test.se";
+        //    om.Betyg = 3;
+        //    omdomesLista.Add (om);
+        //    return omdomesLista;
+        //}            
+
 
 
         public string IntroBild { get; set; }
@@ -116,6 +131,7 @@ namespace Pizzerior.ViewModels
             _selectedPizzeria.PostOrt = PostOrt;
             _selectedPizzeria.PostNr = PostNr;
             _selectedPizzeria.IntroBild = IntroBild;
+            
             Pizzeria upPizzeria = _pizzeriaService.Update(_selectedPizzeria);
             if(upPizzeria!=null)
             {
@@ -250,7 +266,7 @@ namespace Pizzerior.ViewModels
                 }
                 catch (Exception ex)
                 {
-
+                    _loggerService.LogInfo(System.Reflection.MethodBase.GetCurrentMethod().Name + " " + ex.Message);
                     MessageBox.Show($"Error loading image: {ex.Message}"); 
                 }
             }
@@ -289,6 +305,7 @@ namespace Pizzerior.ViewModels
             }
             catch (Exception ex)
             {
+                _loggerService.LogInfo(System.Reflection.MethodBase.GetCurrentMethod().Name + " " + ex.Message);
                 MessageBox.Show(ex.Message, "", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }               
