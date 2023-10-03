@@ -55,11 +55,11 @@ namespace Pizzerior.ViewModels
             }
         }
 
-        private string _betyg;
+        private string _betyg="Medel";
 
         public string Betyg
         {
-            get { return _betyg ?? ""; }
+            get { return _betyg; }
             set
             {
                 if (_betyg != value)
@@ -68,7 +68,7 @@ namespace Pizzerior.ViewModels
                     OnPropertyChanged(nameof(Namn));
                 }
             }
-        }
+        } 
 
 
 
@@ -105,8 +105,35 @@ namespace Pizzerior.ViewModels
             omdome.PizzeriaID_Ref = pizzaID;
             omdome.Namn = Namn;
             omdome.Epost = Epost;
-            string betyg = Betyg.ToUpper(); 
+            string betyg = Betyg.ToUpper();
+            int iBetyg = 0;
+            switch (betyg.ToUpper())
+            {
+                case "MEDEL":
+                    iBetyg = 3;
+                    break;
+                case "HEMSK":
+                    iBetyg = 1;
+                    break;
+                case "DÅLIG":
+                    iBetyg = 2;
+                    break;
+                case "MYCKET BRA":
+                    iBetyg = 4;
+                    break;
+                case "UTMÄRKT":
+                    iBetyg = 5;
+                    break;
+            }
+            omdome.Betyg = iBetyg;
+            omdome.Skapad = DateTime.Now;
+            omdome.Modifierad = DateTime.Now;
+            omdome.OmdomeID = Guid.NewGuid().ToString();
 
+            if (_selectedPizzeria.Omdomen != null)
+            {
+                _selectedPizzeria.Omdomen.Add(omdome); 
+            }
 
             Pizzeria upPizzeria = _pizzeriaService.Update(_selectedPizzeria);
             if (upPizzeria != null)
@@ -120,6 +147,16 @@ namespace Pizzerior.ViewModels
             }
         }
 
+
+        public List<string> BetygsAlternativ { get; } = new List<string>
+        {
+            "Utmärkt",
+            "Mycket Bra",
+            "Medel",
+            "Dålig",
+            "Hemsk"
+            
+        };
 
 
 

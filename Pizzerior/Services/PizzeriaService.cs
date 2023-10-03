@@ -19,6 +19,8 @@ namespace Pizzerior.Services
 {
     public class PizzeriaService : IPizzeriaService
     {
+        ILoggerService _loggerService;
+
         readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings()
         {
             Formatting = Newtonsoft.Json.Formatting.Indented,
@@ -29,7 +31,7 @@ namespace Pizzerior.Services
 
         public PizzeriaService()
         {
-
+            _loggerService= new LoggerService();
         }
 
         public List<Pizzeria> GetAll()
@@ -110,8 +112,9 @@ namespace Pizzerior.Services
                 }
                 else { return false; }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _loggerService.LogError(System.Reflection.MethodBase.GetCurrentMethod().Name, ex); 
                 return false;
             }
         }
@@ -119,43 +122,49 @@ namespace Pizzerior.Services
 
         public Pizzeria Update(Pizzeria pizzeria)
         {
-            List<Pizzeria> tmpList = GetAll();
-            if (tmpList != null)
+            try
             {
-                Pizzeria p = tmpList.Where(x => x.PizzeriaID == pizzeria.PizzeriaID).FirstOrDefault();
-                p.Namn = pizzeria.Namn;
-                p.Adress = pizzeria.Adress;
-                p.PostNr = pizzeria.PostNr;
-                p.IntroBild = pizzeria.IntroBild;
-                p.Modifierad = DateTime.Now;
-                p.PostOrt = pizzeria.PostOrt;
-                if (p.Omdomen != null && p.Omdomen.Count > 0)
+                List<Pizzeria> tmpList = GetAll();
+                if (tmpList != null)
                 {
-                    foreach (Omdome omd in pizzeria.Omdomen) 
+                    Pizzeria p = tmpList.Where(x => x.PizzeriaID == pizzeria.PizzeriaID).FirstOrDefault();
+                    p.Namn = pizzeria.Namn;
+                    p.Adress = pizzeria.Adress;
+                    p.PostNr = pizzeria.PostNr;
+                    p.IntroBild = pizzeria.IntroBild;
+                    p.Modifierad = DateTime.Now;
+                    p.PostOrt = pizzeria.PostOrt;
+                    if (p.Omdomen == null || p.Omdomen.Count == 0)
                     {
-                        p.Omdomen.Add(omd); 
+                        p.Omdomen = new List<Omdome>();
                     }
+
+                    foreach (Omdome omd in pizzeria.Omdomen)
+                    {
+                        p.Omdomen.Add(omd);
+                    }
+
                 }
                 else
                 {
-                    p.Omdomen = new List<Omdome >();    
+                    tmpList = new List<Pizzeria>();
+                    tmpList.Add(pizzeria);
                 }
 
+                var json = SerializeToJson(tmpList);
+                if (!string.IsNullOrEmpty(json))
+                {
+                    File.Delete(dataPath());
+                    SaveJsonAsFile(json, dataPath());
+                    return pizzeria;
+                }
+                else { return null; }
             }
-            else 
+            catch (Exception ex)
             {
-                tmpList= new List<Pizzeria>();
-                tmpList.Add(pizzeria);
+                _loggerService.LogError(System.Reflection.MethodBase.GetCurrentMethod().Name, ex);
+                return null; 
             }
-
-            var json = SerializeToJson(tmpList);
-            if(!string.IsNullOrEmpty(json))
-            {
-                File.Delete(dataPath());
-                SaveJsonAsFile(json, dataPath());
-                return pizzeria;
-            }
-            else { return null; }
 
 
         }

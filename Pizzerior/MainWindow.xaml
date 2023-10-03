@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:Pizzerior" 
         xmlns:dc="clr-namespace:Pizzerior" xmlns:dc1="clr-namespace:Pizzerior.ViewModels"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="PizzeriaGuiden" Height="600" Width="850"  MinWidth="850" MinHeight="600">
+        Title="PizzeriaGuiden" Height="650" Width="900"  MinWidth="900" MinHeight="650">
 
     <Window.Resources>
         <dc1:ImageResourceConverter x:Key="ImageResourceConverter" />
+        <dc1:IntToImageConverter x:Key="IntToImageConverter" />
     </Window.Resources>
     <Window.DataContext>
         <dc1:MainViewModel></dc1:MainViewModel>  
@@ -117,8 +118,18 @@
                                 </StackPanel>
                                  <!-- Betyg -->
                                  <StackPanel Orientation="Horizontal"  HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" Margin="0">
-                                    <Label Content="{Binding Betyg}" Padding="0"></Label>        
-                                 </StackPanel> 
+
+                                   <Image Source="{Binding Betyg, Converter={StaticResource IntToImageConverter}, FallbackValue=/Common/Resources/rate1.png}"  HorizontalAlignment="Left"  Stretch="None"  Height="16" >
+                                    <Image.ToolTip>
+                                                        <TextBlock>
+                                                            <Run Text="Betyg" />
+                                                            <Run Text="{Binding Betyg}" />
+                                                            <Run Text="av 5" />
+                                                        </TextBlock>
+                                                    </Image.ToolTip>
+                                    </Image>
+                                    </StackPanel>                                                         
+
 
                                  </Grid>
                           

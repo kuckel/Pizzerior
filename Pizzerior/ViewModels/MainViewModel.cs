@@ -42,6 +42,9 @@ namespace Pizzerior.ViewModels
             }
         }
 
+
+
+
         private string searchFor;
         public string SearchFor
         {

@@ -9,7 +9,10 @@
     <Window.Resources>
         <viewmodels:InverseBooleanConverter x:Key="InverseBooleanConverter" />
     </Window.Resources>
-    
+    <Window.DataContext>
+        <viewmodels:RatePizzeriaViewModel />
+    </Window.DataContext>
+
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -46,13 +49,8 @@
 
         <StackPanel Margin="5,5,0,0" Grid.Row="3"   HorizontalAlignment="Stretch" Width="Auto" VerticalAlignment="Top" >
             <Label Content="Ditt betyg" FontWeight="Bold" HorizontalAlignment="Stretch" VerticalAlignment="Top" Width="Auto" Padding="0,0,0,5"/>
-            <ComboBox  x:Name="cboBetyg" Padding="7" IsEditable="False" SelectedItem="{Binding Betyg}">
-                <ComboBoxItem Content="--- Välj omdöme --" IsSelected="True"></ComboBoxItem>
-                <ComboBoxItem Content="Utmärkt"></ComboBoxItem>
-                <ComboBoxItem Content="Mycket bra"></ComboBoxItem>
-                <ComboBoxItem Content="Medel"></ComboBoxItem>
-                <ComboBoxItem Content="Dålig"></ComboBoxItem>
-                <ComboBoxItem Content="Hemsk"></ComboBoxItem>
+            <ComboBox  x:Name="cboBetyg" Padding="7" IsEditable="False" SelectedValue="{Binding Betyg}" ItemsSource="{Binding BetygsAlternativ, FallbackValue=Medel}">
+
             </ComboBox>
 
         </StackPanel>

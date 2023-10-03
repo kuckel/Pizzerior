@@ -8,10 +8,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="bin\**" />
     <Compile Remove="Data\**" />
+    <Compile Remove="Logs\**" />
+    <EmbeddedResource Remove="bin\**" />
     <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <None Remove="bin\**" />
     <None Remove="Data\**" />
+    <None Remove="Logs\**" />
+    <Page Remove="bin\**" />
     <Page Remove="Data\**" />
+    <Page Remove="Logs\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,22 +27,14 @@
     <None Remove="Common\Resources\magnify.png" />
     <None Remove="Common\Resources\plus-circle-outline.png" />
     <None Remove="Common\Resources\plus-circle.png" />
+    <None Remove="Common\Resources\rate0.png" />
+    <None Remove="Common\Resources\rate1.png" />
+    <None Remove="Common\Resources\rate2.png" />
+    <None Remove="Common\Resources\rate3.png" />
+    <None Remove="Common\Resources\rate4.png" />
+    <None Remove="Common\Resources\rate5.png" />
     <None Remove="green.png" />
     <None Remove="Views\green.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="bin\Debug\net6.0-windows\Data\data.json" />
-    <Content Include="bin\Debug\net6.0-windows\Images\0b95d3bc-a5c1-40f5-af67-e9cfeda465ce.jpg" />
-    <Content Include="bin\Debug\net6.0-windows\Images\0b95d3bc-a5c1-40f5-af67-e9cfeda465ce.png" />
-    <Content Include="bin\Debug\net6.0-windows\Images\0f7000d0-996e-4620-8717-523a1df4cc13.jpg" />
-    <Content Include="bin\Debug\net6.0-windows\Images\37f31eef-8cf2-4a7e-9077-f102df234cfe.jpg" />
-    <Content Include="bin\Debug\net6.0-windows\Images\4717f741-eb45-4196-aead-ba8407270161.jpg" />
-    <Content Include="bin\Debug\net6.0-windows\Images\554b1e18-8e7e-4e9f-8971-f26855f7c568.jpg" />
-    <Content Include="bin\Debug\net6.0-windows\Images\bd958c68-85c1-4dc9-a774-9043948bae4d.jpg" />
-    <Content Include="bin\Debug\net6.0-windows\Images\bd958c68-85c1-4dc9-a774-9043948bae4d.png" />
-    <Content Include="bin\Debug\net6.0-windows\Images\c436ed66-997d-4936-82b9-586c5c9e4c36.jpg" />
-    <Content Include="bin\Debug\net6.0-windows\Images\Missing-image.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,6 +61,24 @@
     <Resource Include="Common\Resources\plus-circle.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Common\Resources\rate0.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Common\Resources\rate1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Common\Resources\rate2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Common\Resources\rate3.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Common\Resources\rate4.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Common\Resources\rate5.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="green.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -73,10 +91,6 @@
     <None Update="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Logs\" />
   </ItemGroup>
 
 </Project>

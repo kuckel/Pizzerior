@@ -76,7 +76,35 @@
     "IntroBild": "554b1e18-8e7e-4e9f-8971-f26855f7c568.jpg",
     "Skapad": "2023-09-25",
     "Modifierad": "2023-10-03",
-    "Omdomen": []
+    "Omdomen": [
+      {
+        "OmdomeID": "175aec98-c7b4-4a89-8633-fea5fdb48891",
+        "PizzeriaID_Ref": "554b1e18-8e7e-4e9f-8971-f26855f7c568",
+        "Namn": "Nisse",
+        "Epost": "Nisse@test.se",
+        "Betyg": 4,
+        "Skapad": "2023-10-03",
+        "Modifierad": "2023-10-03"
+      },
+      {
+        "OmdomeID": "175aec98-c7b4-4a89-8633-fea5fdb48891",
+        "PizzeriaID_Ref": "554b1e18-8e7e-4e9f-8971-f26855f7c568",
+        "Namn": "Nisse",
+        "Epost": "Nisse@test.se",
+        "Betyg": 4,
+        "Skapad": "2023-10-03",
+        "Modifierad": "2023-10-03"
+      },
+      {
+        "OmdomeID": "7a771a97-80df-400b-a514-6fe571c4ad48",
+        "PizzeriaID_Ref": "554b1e18-8e7e-4e9f-8971-f26855f7c568",
+        "Namn": "Kalle",
+        "Epost": "Kalle@test.se",
+        "Betyg": 1,
+        "Skapad": "2023-10-03",
+        "Modifierad": "2023-10-03"
+      }
+    ]
   },
   {
     "PizzeriaID": "37f31eef-8cf2-4a7e-9077-f102df234cfe",
