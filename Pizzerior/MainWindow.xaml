@@ -11,6 +11,7 @@
     <Window.Resources>
         <dc1:ImageResourceConverter x:Key="ImageResourceConverter" />
         <dc1:IntToImageConverter x:Key="IntToImageConverter" />
+        <dc1:IdToRatesConverter x:Key="IdToRatesConverter" />        
     </Window.Resources>
     <Window.DataContext>
         <dc1:MainViewModel></dc1:MainViewModel>  
@@ -121,27 +122,27 @@
 
                                    <Image Source="{Binding Betyg, Converter={StaticResource IntToImageConverter}, FallbackValue=/Common/Resources/rate1.png}"  HorizontalAlignment="Left"  Stretch="None"  Height="16" >
                                     <Image.ToolTip>
-                                                        <TextBlock>
-                                                            <Run Text="Betyg" />
-                                                            <Run Text="{Binding Betyg}" />
-                                                            <Run Text="av 5" />
-                                                        </TextBlock>
-                                                    </Image.ToolTip>
+                                         <TextBlock>
+                                          <Run Text="Betyg" />
+                                          <Run Text="{Binding Betyg}" />
+                                          <Run Text="av 5" />
+                                          </TextBlock>
+                                        </Image.ToolTip>
                                     </Image>
-                                    </StackPanel>                                                         
-
+                                                <TextBlock Margin="7,0,0,0"  Foreground="#B6B6B6">
+                                            <Run Text="{Binding PizzeriaID, Converter={StaticResource IdToRatesConverter}}" />
+                                            <Run Text="omdömen" />
+                                        </TextBlock>                                                   
+                                       </StackPanel>
 
                                  </Grid>
-                          
+                                                
                             </Button>
                                 </DockPanel>
                                 <Border.Effect>
                                     <DropShadowEffect ShadowDepth="1" Opacity="0.1"/>
                                 </Border.Effect>
-
-         
-                            </Border>
-
+                            </Border>                                                
 
 
                         </DataTemplate>

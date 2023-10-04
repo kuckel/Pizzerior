@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Configuration;
+using System.Diagnostics.Eventing.Reader;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -45,7 +46,20 @@ namespace Pizzerior.Services
                 }
                 else
                 {
-                    return null;
+                    List<Pizzeria> pizzerior= new List<Pizzeria>();
+                    Pizzeria newPizzeria = new Pizzeria();
+                    newPizzeria.PizzeriaID = System.Guid.NewGuid().ToString();
+                    newPizzeria.Namn = "Exempelpizzeria";
+                    newPizzeria.Adress = "Exempelgatan 4";
+                    newPizzeria.PostNr = "123 45";
+                    newPizzeria.IntroBild = "Missing-image.png";
+                    newPizzeria.PostOrt = "Exempelorten";
+                    pizzerior.Add(newPizzeria); 
+                    string jsonTxt = SerializeToJson<List<Pizzeria>>(pizzerior);
+                    SaveJsonAsFile(jsonTxt, dataPath());
+                    return pizzerior;
+
+
                 }
             }
             catch (Exception ex)
@@ -121,7 +135,8 @@ namespace Pizzerior.Services
         {
             try
             {
-                List<Pizzeria> tmpList = GetAll().OrderByDescending(x => x.Modifierad).ToList();
+                List<Pizzeria> tmpList = new List<Pizzeria>();
+                 tmpList = GetAll().OrderByDescending(x => x.Modifierad).ToList();
                 if (tmpList == null)
                 {
                      tmpList= new List<Pizzeria>();            
@@ -138,7 +153,7 @@ namespace Pizzerior.Services
             }
             catch (Exception ex)
             {
-                _loggerService.LogError(System.Reflection.MethodBase.GetCurrentMethod().Name, ex); 
+                _loggerService.LogError(System.Reflection.MethodBase.GetCurrentMethod().Name, ex);
                 return false;
             }
         }
@@ -158,15 +173,15 @@ namespace Pizzerior.Services
                     p.IntroBild = pizzeria.IntroBild;
                     p.Modifierad = DateTime.Now;
                     p.PostOrt = pizzeria.PostOrt;
-                    if (p.Omdomen == null || p.Omdomen.Count == 0)
+                    if (p.Omdomen == null)
                     {
                         p.Omdomen = new List<Omdome>();
                     }
-
-                    foreach (Omdome omd in pizzeria.Omdomen)
+                    else
                     {
-                        p.Omdomen.Add(omd);
+                        p.Omdomen = pizzeria.Omdomen;
                     }
+
 
                 }
                 else
@@ -178,7 +193,7 @@ namespace Pizzerior.Services
                 var json = SerializeToJson(tmpList);
                 if (!string.IsNullOrEmpty(json))
                 {
-                    File.Delete(dataPath());
+                    //File.Delete(dataPath());
                     SaveJsonAsFile(json, dataPath());
                     return pizzeria;
                 }

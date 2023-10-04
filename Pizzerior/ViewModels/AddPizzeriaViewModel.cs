@@ -176,7 +176,7 @@ namespace Pizzerior.ViewModels
         {
             string id = Guid.NewGuid().ToString();
 
-            MessageBox.Show(Error); 
+           
 
             if (string.IsNullOrEmpty(Namn))
             {
@@ -197,7 +197,7 @@ namespace Pizzerior.ViewModels
                 Namn = Namn,
                 Adress = Adress,
                 PostNr = PostNr,
-                PostOrt = PostOrt,
+                PostOrt = PostOrt.ToUpper(),
                 Skapad = DateTime.Now,
                 Modifierad = DateTime.Now,
             };

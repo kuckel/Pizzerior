@@ -24,7 +24,7 @@ namespace Pizzerior.ViewModels
     {
 
         private readonly IPizzeriaService _pizzeriaService;
-        public MainViewModel MainVM => ViewModelLocator.Instance.MainViewModel;
+        public PizzeriaViewModel  MainVM => ViewModelLocator.Instance.PizzeriaViewModel;
         private readonly Dictionary<string, List<string>> _errors = new Dictionary<string, List<string>>();
         ILoggerService _loggerService;
         [ObservableProperty]
@@ -138,7 +138,7 @@ namespace Pizzerior.ViewModels
             Pizzeria upPizzeria = _pizzeriaService.Update(_selectedPizzeria);
             if (upPizzeria != null)
             {
-                MainVM.StatusText = $"Pizzeria {upPizzeria.Namn} uppdaterad";
+                
                 CloseWindow();
             }
             else
@@ -209,7 +209,13 @@ namespace Pizzerior.ViewModels
 
         private void CloseWindow()
         {
-            MainVM.ReloadCommand.Execute(null); // Reload the Main
+
+            Pizzeria pizzeria = _pizzeriaService.Get(_selectedPizzeria.PizzeriaID);
+            if (pizzeria!=null)
+            {
+             MainVM.ReloadRate(pizzeria); // Reload the Rate               
+            }
+
 
             foreach (Window window in Application.Current.Windows)
             {

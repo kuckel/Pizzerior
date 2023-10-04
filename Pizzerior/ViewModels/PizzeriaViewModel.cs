@@ -121,9 +121,14 @@ namespace Pizzerior.ViewModels
             win.Owner = Application.Current.MainWindow;
             win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             win.ShowDialog();
+       }
 
-
+        [RelayCommand]
+        public void ReloadRate(Pizzeria pizzeria)
+        {
+            _selectedPizzeria = pizzeria;        
         }
+
 
 
 
