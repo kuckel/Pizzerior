@@ -14,17 +14,25 @@ namespace Pizzerior.ViewModels
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is string imagePath && !string.IsNullOrEmpty(imagePath) )
+            try
             {
-                string pathToImages = Directory.GetCurrentDirectory() + @"\Images\" + imagePath;
-                var uri = new Uri(pathToImages);              
-                return new System.Windows.Media.Imaging.BitmapImage(uri);
+                if (value is string imagePath && !string.IsNullOrEmpty(imagePath))
+                {
+                    string pathToImages = Directory.GetCurrentDirectory() + @"\Images\" + imagePath;
+                    var uri = new Uri(pathToImages);
+                    return new System.Windows.Media.Imaging.BitmapImage(uri);
+                }
+                else
+                {
+                    string pathToImages = Directory.GetCurrentDirectory() + @"\Images\Missing-image.png";
+                    var uri = new Uri(pathToImages);
+                    return new System.Windows.Media.Imaging.BitmapImage(uri);
+                }
             }
-            else
+            catch (Exception)
             {
-                string pathToImages = Directory.GetCurrentDirectory() + @"\Images\Missing-image.png";
-                var uri = new Uri(pathToImages);
-                return new System.Windows.Media.Imaging.BitmapImage(uri);
+                return new object();
+                
             }
           
 

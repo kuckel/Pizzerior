@@ -68,6 +68,8 @@ namespace Pizzerior.ViewModels
 
         public MainViewModel()
         {
+            CreteFoldersIfMissing();
+
             log4net.Config.XmlConfigurator.Configure();
             _selectedPizzeria = new Pizzeria();
             Pizzerior = new ObservableCollection<Pizzeria>();
@@ -75,6 +77,23 @@ namespace Pizzerior.ViewModels
             Pizzerior = _pizzeriaService.GetAllCollection();
             StatusText = "Antal pizzerior: " + Pizzerior.Count();
             
+
+        }
+
+
+        private void CreteFoldersIfMissing()
+        {
+
+            string ImageFolderPath = Directory.GetCurrentDirectory() + @"\Images";
+            string DataFolderPath = Directory.GetCurrentDirectory() + @"\Data";
+            if (!Directory.Exists(ImageFolderPath))
+            {
+                Directory.CreateDirectory(ImageFolderPath);  
+            }
+            if (!Directory.Exists(DataFolderPath))
+            {
+                Directory.CreateDirectory(DataFolderPath);
+            }
 
         }
 
@@ -125,26 +144,34 @@ namespace Pizzerior.ViewModels
         [RelayCommand]
         void Open(Pizzeria pizzeria)
         {
-            string pathToImages = Directory.GetCurrentDirectory() + @"\Images\";
-            string pizzaImage = pizzeria.IntroBild ?? "Missing-image.png";
-            var uri = new Uri(pathToImages + pizzaImage);
-            StatusText = "Vald pizzeria: " + pizzeria.Namn; 
-            PizzeriaViewModel wvm = new PizzeriaViewModel();
-            PizzeriaDetail win = new PizzeriaDetail();
-            win.DataContext = wvm;
-            wvm.SelectedPizzeria = pizzeria;
-            wvm.Namn= pizzeria.Namn;
-            wvm.Adress = pizzeria.Adress;
-            wvm.PostNr = pizzeria.PostNr;
-            wvm.PostOrt = pizzeria.PostOrt;
-            wvm.UploadedImage = new BitmapImage(uri);
-            win.MaxHeight = 400; 
-            win.MaxWidth = 600;
-            win.Owner = Application.Current.MainWindow;
-            win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            win.ShowDialog();
-            Pizzerior = _pizzeriaService.GetAllCollection();
-            StatusText = "Antal pizzerior: " + Pizzerior.Count();
+            try
+            {
+                string pathToImages = Directory.GetCurrentDirectory() + @"\Images\";
+                string pizzaImage = pizzeria.IntroBild ?? "Missing-image.png";
+                var uri = new Uri(pathToImages + pizzaImage);
+                StatusText = "Vald pizzeria: " + pizzeria.Namn;
+                PizzeriaViewModel wvm = new PizzeriaViewModel();
+                PizzeriaDetail win = new PizzeriaDetail();
+                win.DataContext = wvm;
+                wvm.SelectedPizzeria = pizzeria;
+                wvm.Namn = pizzeria.Namn;
+                wvm.Adress = pizzeria.Adress;
+                wvm.PostNr = pizzeria.PostNr;
+                wvm.PostOrt = pizzeria.PostOrt;
+                wvm.UploadedImage = new BitmapImage(uri);
+                win.MaxHeight = 400;
+                win.MaxWidth = 600;
+                win.Owner = Application.Current.MainWindow;
+                win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                win.ShowDialog();
+                Pizzerior = _pizzeriaService.GetAllCollection();
+                StatusText = "Antal pizzerior: " + Pizzerior.Count();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"",MessageBoxButton.OK,MessageBoxImage.Error);
+                return;
+            }
 
         }
            
@@ -153,17 +180,25 @@ namespace Pizzerior.ViewModels
         [RelayCommand]
         void OpenAdd()
         {
-            StatusText = "Lägg till Pizzeria";
-            AddPizzeriaViewModel wvm = new AddPizzeriaViewModel();
-            PizzeriaAdd win = new PizzeriaAdd();
-            win.DataContext = wvm;
-            win.MaxHeight = 400; ;
-            win.MaxWidth = 600;
-            win.Owner = Application.Current.MainWindow;
-            win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            win.ShowDialog();
-            Pizzerior = _pizzeriaService.GetAllCollection();
-            StatusText = "Antal pizzerior: " + Pizzerior.Count();
+            try
+            {
+                StatusText = "Lägg till Pizzeria";
+                AddPizzeriaViewModel wvm = new AddPizzeriaViewModel();
+                PizzeriaAdd win = new PizzeriaAdd();
+                win.DataContext = wvm;
+                win.MaxHeight = 400; ;
+                win.MaxWidth = 600;
+                win.Owner = Application.Current.MainWindow;
+                win.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                win.ShowDialog();
+                Pizzerior = _pizzeriaService.GetAllCollection();
+                StatusText = "Antal pizzerior: " + Pizzerior.Count();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
 
 
