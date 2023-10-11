@@ -1,0 +1,204 @@
+﻿        
+
+	public className()
+	{
+    		if(_httpClient == null)
+                InitializeHttpClient();
+	}
+
+
+
+
+	public async Task<T> Get<T>(string resource, string parameters = null)
+        {
+            StringBuilder sb = new StringBuilder(resource);
+           if (parameters != null)
+           {
+               sb.Append(parameters);
+           }
+
+           string uri = sb.ToString();
+           _log.Debug(("GET Request is: " + uri));
+
+           var result = await _httpClient.GetAsync(uri);
+
+           if (!result.IsSuccessStatusCode)
+           {
+                _log.Error($"Fel vid GET anrop på {resource}, Statuscode: {result.StatusCode}, Reason phrase: {result.ReasonPhrase}");
+               throw new Exception(
+                   $"Något gick fel vid kommunikation med xxx Statuscode: {result.StatusCode}, Reason phrase: {result.ReasonPhrase}");
+           }
+
+           var responseContent = await result.Content.ReadAsStringAsync();
+
+           _log.Debug("GET Response content was: " + responseContent);
+
+           try
+           {
+               return JsonConvert.DeserializeObject<T>(responseContent);
+           }
+           catch (Exception)
+           {
+               _log.Error("Fel vid deserialisering av JSON-objekt. JSON som inte gick att deserialisera: " + responseContent);
+               throw;
+           }
+
+            
+        }
+
+
+
+
+
+
+        public async Task<T> Post<T>(string resource, T requestData)
+        {
+            var requestContentAsJson = JsonConvert.SerializeObject(requestData);
+            
+            _log.Debug("POST request body: " + requestContentAsJson);
+
+            var requestBody = new StringContent(content: requestContentAsJson, encoding: Encoding.UTF8, mediaType: "application/json");
+            
+            var result = await _httpClient.PostAsync(resource,requestBody);
+
+            if (!result.IsSuccessStatusCode)
+            {
+                _log.Error($"Fel vid POST anrop på {resource}, Statuscode: {result.StatusCode}, Reason phrase: {result.ReasonPhrase}");
+                _log.Error("POST request body was: " + requestContentAsJson);
+
+                if (result.StatusCode == (HttpStatusCode) 422) 
+                {
+                    var errResponseContent = await result.Content.ReadAsStringAsync();
+                    _log.Error("POST response body was: " + errResponseContent);
+                }
+
+                throw new Exception(
+                    $"Något gick fel vid kommunikation med applikationen. Statuscode: {result.StatusCode}, Reason phrase: {result.ReasonPhrase}");
+            }
+
+            var responseContent = await result.Content.ReadAsStringAsync();
+
+            _log.Debug("POST response body: " + responseContent);
+
+            try
+            {
+                return JsonConvert.DeserializeObject<T>(responseContent);
+            }
+            catch (Exception)
+            {
+                _log.Error("Fel vid deserialisering av JSON-objekt. JSON som inte gick att deserialisera: " + responseContent);
+                throw;
+            }
+        }
+
+
+
+
+
+
+       public async Task<Tresp> Patch<Treq, Tresp>(string resource, Treq requestData)
+        {
+
+            var requestContentAsJson = JsonConvert.SerializeObject(requestData);
+
+            _log.Debug("PATCH request body: " + requestContentAsJson);
+
+            var requestBody = new StringContent(content: requestContentAsJson, encoding: Encoding.UTF8, mediaType: "application/json-patch+json");
+            
+            var result = await _httpClient.PatchAsync(resource, requestBody);
+
+            if (!result.IsSuccessStatusCode)
+            {
+                _log.Error($"Fel vid PATCH anrop på {resource}, Statuscode: {result.StatusCode}, Reason phrase: {result.ReasonPhrase}");
+                _log.Error("PATCH request body was: " + requestContentAsJson);
+
+                if (result.StatusCode == (HttpStatusCode)422) 
+                {
+                    var errResponseContent = await result.Content.ReadAsStringAsync();
+                    _log.Error("PATCH response body was: " + errResponseContent);
+                }
+
+                throw new Exception(
+                    $"Något gick fel vid kommunikation med applikationen Statuscode: {result.StatusCode}, Reason phrase: {result.ReasonPhrase}");
+            }
+
+            var responseContent = await result.Content.ReadAsStringAsync();
+
+            _log.Debug("PATCH response body: " + responseContent);
+
+            try
+            {
+                return JsonConvert.DeserializeObject<Tresp>(responseContent);
+            }
+            catch (Exception)
+            {
+                _log.Error("Fel vid deserialisering av JSON-objekt. JSON som inte gick att deserialisera: " + responseContent);
+                throw;
+            }
+        }
+
+
+   // --------------------------------------------------------------------
+
+
+	private void InitializeHttpClient()
+	{
+	
+            	BaseAddress = new Uri(_configManagerWrapper.AppSettings("BaseUrl")),
+                Timeout = TimeSpan.FromSeconds(int.Parse(_configManagerWrapper.AppSettings("ClientTimeout"))),
+                MaxResponseContentBufferSize = long.Parse(_configManagerWrapper.AppSettings("ClientResponseBufferSize"))
+            };
+
+            var authToken = Encoding.ASCII.GetBytes($"{username}:{password}");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",Convert.ToBase64String(authToken));
+
+
+	}
+
+
+
+	// Call Endpoint GET
+       public Customer GetCustomers(string customerId)
+        {
+            string resource = $"{ResourcePaths.WebApi}{ResourcePaths.Customers}/{customerId}?companyId={Codes.DefaultCompanyId}";
+
+            Task<CustomersDetails> a;
+            a = _httpClient.Get<Customer>(resource);
+            a.Wait();
+            return a.Result;
+        }
+
+
+       public Customer PostCustomers(Customer data)
+        {
+            string resource = $"{ResourcePaths.WebApi}{ResourcePaths.Customer}";
+
+            var a = _httpClient.PerformPost(resource, data);
+            a.Wait();
+
+            return a.Result;
+        }
+
+
+     public Customer PatchCustomer<T>(string customerId, PatchOperation[] patchOperations)
+        {
+            string resource = $"{ResourcePaths.WebApi}{ResourcePaths.Customer}/{customerId}";
+
+            var a = _httpClient.PerformPatch<PatchOperation[], Customer>(resource, patchOperations);
+            a.Wait();
+
+            return a.Result;
+        }
+
+
+
+
+
+    public class ResourcePaths
+    {
+        public const string WebApi = "/api-path-here";
+        public const string WebServices = "/webservive-path-her";
+        public const string QueryObjectsCustomers = "/v1/objects/customers";
+        public const string Customers = "/v1/customers";
+        public const string Objects = "/v1/objects";
+    }
