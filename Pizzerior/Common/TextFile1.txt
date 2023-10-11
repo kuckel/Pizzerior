@@ -173,7 +173,7 @@
         {
             string resource = $"{ResourcePaths.WebApi}{ResourcePaths.Customer}";
 
-            var a = _httpClient.PerformPost(resource, data);
+            var a = _httpClient.Post(resource, data);
             a.Wait();
 
             return a.Result;
@@ -184,7 +184,7 @@
         {
             string resource = $"{ResourcePaths.WebApi}{ResourcePaths.Customer}/{customerId}";
 
-            var a = _httpClient.PerformPatch<PatchOperation[], Customer>(resource, patchOperations);
+            var a = _httpClient.Patch<PatchOperation[], Customer>(resource, patchOperations);
             a.Wait();
 
             return a.Result;
