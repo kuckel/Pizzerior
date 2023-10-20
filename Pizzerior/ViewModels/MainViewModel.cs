@@ -22,11 +22,27 @@ namespace Pizzerior.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
-     
-       
+
+        
         private ObservableCollection<Pizzeria> _pizzerior { get; set; }
         private readonly IPizzeriaService _pizzeriaService;
-        
+        private readonly ILoggerService _loggerService;
+
+        public MainViewModel(IPizzeriaService pizzeriaService, ILoggerService loggerservice )
+        {
+            
+            CreteFoldersIfMissing();
+            log4net.Config.XmlConfigurator.Configure();
+            _loggerService= loggerservice;
+            _selectedPizzeria = new Pizzeria();
+            Pizzerior = new ObservableCollection<Pizzeria>();
+            _pizzeriaService = pizzeriaService;
+            Pizzerior = _pizzeriaService.GetAllCollection();
+            StatusText = "Antal pizzerior: " + Pizzerior.Count();           
+
+
+
+        }
 
 
         public ObservableCollection<Pizzeria> Pizzerior 
@@ -66,19 +82,7 @@ namespace Pizzerior.ViewModels
         [ObservableProperty]
         Pizzeria _selectedPizzeria;
 
-        public MainViewModel()
-        {
-            CreteFoldersIfMissing();
 
-            log4net.Config.XmlConfigurator.Configure();
-            _selectedPizzeria = new Pizzeria();
-            Pizzerior = new ObservableCollection<Pizzeria>();
-            _pizzeriaService = new PizzeriaService();
-            Pizzerior = _pizzeriaService.GetAllCollection();
-            StatusText = "Antal pizzerior: " + Pizzerior.Count();
-            
-
-        }
 
 
         private void CreteFoldersIfMissing()
@@ -146,11 +150,12 @@ namespace Pizzerior.ViewModels
         {
             try
             {
+
                 string pathToImages = Directory.GetCurrentDirectory() + @"\Images\";
                 string pizzaImage = pizzeria.IntroBild ?? "Missing-image.png";
                 var uri = new Uri(pathToImages + pizzaImage);
                 StatusText = "Vald pizzeria: " + pizzeria.Namn;
-                PizzeriaViewModel wvm = new PizzeriaViewModel();
+                PizzeriaViewModel wvm = ViewModelLocator.Instance.PizzeriaViewModel; 
                 PizzeriaDetail win = new PizzeriaDetail();
                 win.DataContext = wvm;
                 wvm.SelectedPizzeria = pizzeria;
@@ -166,14 +171,14 @@ namespace Pizzerior.ViewModels
                 win.ShowDialog();
                 Pizzerior = _pizzeriaService.GetAllCollection();
                 StatusText = "Antal pizzerior: " + Pizzerior.Count();
-            }
+        }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message,"",MessageBoxButton.OK,MessageBoxImage.Error);
                 return;
             }
 
-        }
+}
            
 
 
@@ -183,7 +188,7 @@ namespace Pizzerior.ViewModels
             try
             {
                 StatusText = "Lägg till Pizzeria";
-                AddPizzeriaViewModel wvm = new AddPizzeriaViewModel();
+                AddPizzeriaViewModel wvm = ViewModelLocator.Instance.AddPizzeriaViewModel;
                 PizzeriaAdd win = new PizzeriaAdd();
                 win.DataContext = wvm;
                 win.MaxHeight = 400; ;

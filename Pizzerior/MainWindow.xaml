@@ -13,9 +13,9 @@
         <dc1:IntToImageConverter x:Key="IntToImageConverter" />
         <dc1:IdToRatesConverter x:Key="IdToRatesConverter" />        
     </Window.Resources>
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <dc1:MainViewModel></dc1:MainViewModel>  
-    </Window.DataContext>  
+    </Window.DataContext>-->  
  
 
     <Grid>

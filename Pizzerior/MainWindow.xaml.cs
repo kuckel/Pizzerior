@@ -25,7 +25,7 @@ namespace Pizzerior
         {
 
             InitializeComponent();
-            //this.DataContext = new MainViewModel();
+          
            
         }            
            

@@ -1,76 +1,38 @@
 [
   {
-    "PizzeriaID": "00704bf2-5988-4c5f-ad41-c3909377a26f",
-    "Namn": "Nisses Pizzaugn",
-    "Adress": "Skogsgatan 55",
-    "PostNr": "456 79",
-    "PostOrt": "Västerås",
+    "PizzeriaID": "44b06ff5-169f-443d-bc6d-6a16d7342c81",
+    "Namn": "Exempelpizzeria",
+    "Adress": "Exempelgatan 4",
+    "PostNr": "123 45",
+    "PostOrt": "Exempelorten",
     "Betyg": 0,
-    "IntroBild": "00704bf2-5988-4c5f-ad41-c3909377a26f.jpg",
-    "Skapad": "2023-10-04",
-    "Modifierad": "2023-10-04",
-    "Omdomen": [
-      {
-        "OmdomeID": "c1803c98-764b-4760-928e-5b488434c7cc",
-        "PizzeriaID_Ref": "00704bf2-5988-4c5f-ad41-c3909377a26f",
-        "Namn": "Urban",
-        "Epost": "asdasda@test.se",
-        "Betyg": 4,
-        "Skapad": "2023-10-04",
-        "Modifierad": "2023-10-04"
-      },
-      {
-        "OmdomeID": "4c5ff61e-f5c7-4d36-9c04-bfd6fa9d24a6",
-        "PizzeriaID_Ref": "00704bf2-5988-4c5f-ad41-c3909377a26f",
-        "Namn": "dfgdfgdf",
-        "Epost": "fuuuuu@test.se",
-        "Betyg": 2,
-        "Skapad": "2023-10-04",
-        "Modifierad": "2023-10-04"
-      },
-      {
-        "OmdomeID": "56171fe7-24e4-4804-b152-523fd94136eb",
-        "PizzeriaID_Ref": "00704bf2-5988-4c5f-ad41-c3909377a26f",
-        "Namn": "Inge johansson",
-        "Epost": "inge@test.se",
-        "Betyg": 4,
-        "Skapad": "2023-10-04",
-        "Modifierad": "2023-10-04"
-      }
-    ]
+    "IntroBild": "Missing-image.png",
+    "Skapad": "0001-01-01",
+    "Modifierad": "2023-10-20",
+    "Omdomen": []
   },
   {
-    "PizzeriaID": "1bd0b143-9e12-464b-ac7a-383853d27c24",
-    "Namn": "Viktors äckliga Pizza",
-    "Adress": "Pizzadegsvägen 7",
-    "PostNr": "585 90",
-    "PostOrt": "Linköping",
-    "Betyg": 0,
-    "IntroBild": "1bd0b143-9e12-464b-ac7a-383853d27c24.jpg",
-    "Skapad": "2023-10-04",
-    "Modifierad": "2023-10-04",
-    "Omdomen": [
-      {
-        "OmdomeID": "05eff77f-f2c6-4a83-b266-b5ed4e4d2e24",
-        "PizzeriaID_Ref": "1bd0b143-9e12-464b-ac7a-383853d27c24",
-        "Namn": "Peter",
-        "Epost": "peter@test.se",
-        "Betyg": 2,
-        "Skapad": "2023-10-04",
-        "Modifierad": "2023-10-04"
-      }
-    ]
-  },
-  {
-    "PizzeriaID": "ef61fc11-2d65-4a00-ab2c-b2b718f2f0da",
-    "Namn": "Peters Pizzeria",
-    "Adress": "Skedagatan 12",
-    "PostNr": "835 67",
-    "PostOrt": "LINKÖPING",
+    "PizzeriaID": "a04df8b8-8cd8-4df8-904a-4d6e6fad315b",
+    "Namn": "Jompas Pizza",
+    "Adress": "dfgdfgdfg",
+    "PostNr": "567 89",
+    "PostOrt": "dfgdfg",
     "Betyg": 0,
     "IntroBild": null,
-    "Skapad": "2023-10-04",
-    "Modifierad": "2023-10-04",
+    "Skapad": "2023-10-20",
+    "Modifierad": "2023-10-20",
+    "Omdomen": []
+  },
+  {
+    "PizzeriaID": "e0939909-e9b3-48bd-8e30-433b6db48499",
+    "Namn": "Jannes Pizza",
+    "Adress": "Jannegatan 5",
+    "PostNr": "678 90",
+    "PostOrt": "VÄSTERÅS",
+    "Betyg": 0,
+    "IntroBild": null,
+    "Skapad": "2023-10-20",
+    "Modifierad": "2023-10-20",
     "Omdomen": []
   }
 ]

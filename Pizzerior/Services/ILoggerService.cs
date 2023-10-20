@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pizzerior.Services
 {
-    interface ILoggerService
+    public interface ILoggerService
     {
         void LogError(string message, Exception ex);
         void LogInfo(string message);

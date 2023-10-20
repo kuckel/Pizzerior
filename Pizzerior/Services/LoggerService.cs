@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Pizzerior.Services
 {
-    public class LoggerService : ILoggerService
+    public partial class LoggerService : ILoggerService
     {
         private readonly ILog log;
 

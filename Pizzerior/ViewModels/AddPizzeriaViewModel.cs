@@ -31,10 +31,10 @@ namespace Pizzerior.ViewModels
         public MainViewModel MainVM => ViewModelLocator.Instance.MainViewModel;
 
 
-        public AddPizzeriaViewModel()
+        public AddPizzeriaViewModel(IPizzeriaService pizzeriaService)
         {
-            _pizzeriaService = new PizzeriaService();
-            _pizzeria= new Pizzeria();
+            _pizzeriaService = pizzeriaService;
+            _pizzeria = new Pizzeria();
             _loggerService = new LoggerService(); 
        }
 
@@ -60,7 +60,7 @@ namespace Pizzerior.ViewModels
 
 
         
-         private string _namn;
+         private string _namn = ""  ;
         [Required(ErrorMessage = "Fältet är obligatoriskt.")]
         [MinLength(5, ErrorMessage = "Minst 5 tecken i namn")]
         [MaxLength(40)]       
@@ -77,7 +77,7 @@ namespace Pizzerior.ViewModels
             }
         }
 
-        private string _adress;
+        private string _adress = "";
         [Required(ErrorMessage = "Fältet är obligatoriskt.")]
         [MinLength(5, ErrorMessage = "Minst 5 tecken i Adressen")]
         [MaxLength(40)]
@@ -95,7 +95,7 @@ namespace Pizzerior.ViewModels
         }
 
 
-        private string _postNr;
+        private string _postNr = "";
         public string PostNr
         {
             get { return _postNr; }
@@ -108,7 +108,7 @@ namespace Pizzerior.ViewModels
                 }
             }
         }
-        private string _postOrt;
+        private string _postOrt = "";
         public string PostOrt
         {
             get { return _postOrt; }
@@ -195,9 +195,9 @@ namespace Pizzerior.ViewModels
             {
                 PizzeriaID = id,
                 Namn = Namn,
-                Adress = Adress,
-                PostNr = PostNr,
-                PostOrt = PostOrt.ToUpper(),
+                Adress = Adress ?? "",
+                PostNr = PostNr ?? "",
+                PostOrt = PostOrt.ToUpper() ?? "",
                 Skapad = DateTime.Now,
                 Modifierad = DateTime.Now,
             };

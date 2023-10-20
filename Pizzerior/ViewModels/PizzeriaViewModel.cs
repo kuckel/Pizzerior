@@ -29,9 +29,9 @@ namespace Pizzerior.ViewModels
         [ObservableProperty]
         public Pizzeria _selectedPizzeria;
  
-        public PizzeriaViewModel()
+        public PizzeriaViewModel(IPizzeriaService pizzeriaService)
         {
-            _pizzeriaService = new PizzeriaService();
+            _pizzeriaService = pizzeriaService;
             _loggerService = new LoggerService();
 
              

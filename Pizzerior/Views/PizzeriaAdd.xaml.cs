@@ -23,7 +23,7 @@ namespace Pizzerior.Views
         public PizzeriaAdd()
         {
             InitializeComponent();
-            this.DataContext = new AddPizzeriaViewModel();
+            //this.DataContext = new AddPizzeriaViewModel();
         }
     }
 }
